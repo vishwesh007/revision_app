@@ -1,0 +1,175 @@
+Build a complete Flutter application for 'Revision Buddy' — a revision/flashcard app that supports spaced repetition (SM-2), fetches demo DB files from a demo server, and handles both single-answer MCQ and multiple-select questions. The AI/engineer reading this prompt must deliver a full, runnable codebase and documentation. Aim for production-quality structure, tests, and a small sample demo DB importer.
+
+High-level goals (deliverables)
+- A Flutter app (latest stable Flutter) with a clean architecture (presentation, domain, data).
+- Local persistence using a local SQLite database (Drift) and the ability to import a prepared demo DB file (SQLite or JSON) downloaded from a demo server.
+- Spaced repetition scheduling using the SM-2 algorithm for reviews.
+- Support for question types: single-choice MCQ and multiple-select questions (multi-select), with scoring and correct/incorrect feedback.
+- Deck and question management UI, daily review queue, review history, and basic analytics (accuracy, streaks, next review counts).
+- Unit and widget tests for core logic (SM-2, import, question model, review flow) and a small CI workflow (GitHub Actions) that runs tests on push.
+- A README with run instructions and how to replace the demo DB URL with your own.
+
+Contract (2–4 bullets)
+- Input: a demo DB file URL (HTTPS) or JSON endpoint containing decks/questions, or a downloadable SQLite file. The app must provide a UI action to "Import demo DB" (download + import). For offline use, app uses the imported local DB via Drift.
+- Output: a runnable Flutter app that shows decks, daily review queue (SM-2-sorted), and performs review sessions with persistence of review history and nextReview timestamps.
+- Error modes: invalid/missing DB file, network failures during download, malformed question data. App should show friendly UI errors and retry paths.
+- Success: user can import demo DB, run a daily review session, answer MCQ and multi-select questions, and the app updates scheduling and history correctly.
+
+Important implementation notes & choices (recommended)
+- State management: Riverpod (flutter_riverpod) for simplicity and testability.
+- Local DB: Drift (moor) + sqlite3_flutter_libs. Use Drift's migration and import features; provide a lightweight importer for raw JSON fallback.
+- Background scheduling & notifications: flutter_local_notifications (optional) and use native scheduled notifications for reminders.
+- Platform targets: Android and iOS; keep web as optional with fallback storage (shared_preferences) if required.
+- Tests: use package:test and flutter_test. Provide unit tests for SM-2 and import logic; widget test for the question screen.
+
+Data model (SQL/Drift schema)
+- decks
+  - id (uuid text primary key)
+  - title text
+  - description text
+  - createdAt datetime
+- questions
+  - id (uuid text primary key)
+  - deckId text references decks(id)
+  - type text CHECK(type IN ('mcq','multi-select'))
+  - prompt text
+  - metadata json (optional)
+- choices
+  - id (uuid text primary key)
+  - questionId text references questions(id)
+  - text text
+  - isCorrect boolean
+- reviews
+  - id (uuid text primary key)
+  - questionId text references questions(id)
+  - reviewedAt datetime
+  - quality integer (0-5)
+  - interval integer (days)
+  - repetition integer
+  - easiness real
+  - nextReview datetime
+
+Sample JSON shape (for demo DB import)
+{
+  "decks": [
+    {"id":"deck-1","title":"Biology basics","description":"Cells & DNA"}
+  ],
+  "questions": [
+    {
+      "id":"q1",
+      "deckId":"deck-1",
+      "type":"mcq",
+      "prompt":"Which organelle is known as the powerhouse of the cell?",
+      "choices":[
+        {"id":"c1","text":"Nucleus","isCorrect":false},
+        {"id":"c2","text":"Mitochondria","isCorrect":true},
+        {"id":"c3","text":"Ribosome","isCorrect":false}
+      ]
+    }
+  ]
+}
+
+Demo DB fetch/import behavior (user flows)
+- From the app: Settings or onboarding screen includes an "Import demo DB" button. When pressed, prompt for a URL (prefill with demo URL). The app downloads the file (binary SQLite or JSON), validates it, and imports into the local Drift DB. Show a progress indicator and success/failure.
+- From terminal/powershell (for QA): provide a powershell/curl command to download the demo sqlite file:
+  - PowerShell example:
+
+    Invoke-WebRequest -Uri "https://demo.example.com/demo_revision.db" -OutFile "$env:USERPROFILE\Downloads\demo_revision.db"
+
+  - Or curl (Windows curl is available):
+
+    curl -L -o "$env:USERPROFILE\Downloads\demo_revision.db" "https://demo.example.com/demo_revision.db"
+
+- The app must handle both a) direct import of a provided SQLite file (copy into app's DB path or read and migrate) and b) JSON import (parse and insert rows). If the downloaded file is SQLite and has expected tables, import directly; otherwise, parse JSON fallback.
+
+Spaced repetition: SM-2 algorithm
+- Implement the canonical SM-2 algorithm for scheduling reviews.
+- Provide a small Dart implementation and unit tests. Pseudocode (convert to Dart):
+
+  function sm2(repetition, easiness, interval, quality):
+    if quality < 3:
+      repetition = 0
+      interval = 1
+    else:
+      if repetition == 0:
+        interval = 1
+      else if repetition == 1:
+        interval = 6
+      else:
+        interval = round(interval * easiness)
+      repetition += 1
+    easiness = max(1.3, easiness + 0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+    nextReview = reviewedAt + interval days
+    return {repetition, easiness, interval, nextReview}
+
+- Default easiness factor: 2.5 for new cards.
+- Quality is derived from user's answer correctness and optional confidence UI: map to 0-5 (e.g., fully correct/confident=5, correct but slow=4, partially correct=3, fail=2..0).
+
+UI/UX screens (minimum)
+- Onboarding / Import screen: demo DB import button + demo URL field + manual import (select file) option.
+- Home: shows today's review queue count, progress, decks overview.
+- Deck view: list of questions, add/edit questions, import/export deck.
+- Review flow screen: present one question at a time, show choices (single-tap for MCQ; multi-select toggle for multi-select). After submission show correct answers and a 0-5 quality selector (or map auto: full correct=5, partial=3, wrong=0). Then "Next" updates review record and shows next card.
+- Review summary: session stats and ability to undo last review within the session.
+- Settings: demo DB URL, notification toggles, export DB.
+
+Accessibility
+- Support large fonts, screen-reader labels, accessible contrast, and keyboard navigation where applicable.
+
+Edge cases to cover
+- Network unavailable during demo fetch.
+- Demo file contains unknown question types — skip with warning.
+- Duplicate IDs in demo DB — dedupe on import.
+- Timezone handling for nextReview dates.
+- Very large deck import performance — import in a background isolate and show progress.
+
+Testing
+- Unit tests:
+  - SM-2 edge cases (low quality reset, easiness floor, multi-review progression)
+  - Importer (JSON and SQLite fallback)
+  - Question model validation
+- Widget tests:
+  - Question screen responds to single/multi-select inputs and records review result.
+- CI: GitHub Actions workflow that runs flutter analyze and flutter test on PRs and pushes to main.
+
+Packages (recommendations, keep versions loose but stable):
+- flutter_riverpod
+- drift
+- sqlite3_flutter_libs
+- path_provider
+- flutter_local_notifications (optional)
+- json_serializable (for data models)
+- freezed (optional for immutable models)
+- flutter_test, mocktail
+
+Acceptance criteria (must pass)
+- Importing the provided demo DB URL populates decks and questions locally.
+- The daily review queue contains only due cards and respects SM-2 nextReview timestamps.
+- Answering MCQ and multi-select updates the review history and schedules nextReview correctly based on SM-2.
+- Unit tests for SM-2 and importer are present and pass.
+- The app gracefully handles demo DB download/parse errors and reports them.
+
+Optional extras (nice-to-have)
+- Sync to cloud (optional) using a simple REST API or Firebase.
+- Import from Anki deck export (.apkg) as advanced feature.
+- Export session to CSV.
+
+How to use this prompt with an LLM or engineer
+1. Feed the whole prompt to the LLM and request: "Generate a Flutter project scaffold with the files: lib/, test/, drift schema, example demo DB importer and a README explaining how to run the app and how to import the demo DB. Include unit tests for SM-2 and the importer."
+2. Expect output: a repository skeleton, main UI screens, data layer with Drift tables and importer, and tests. If the LLM cannot produce binary files (SQLite), ask it to produce sample JSON import fixtures and a script to generate a SQLite demo DB.
+
+Quick placeholder demo URL (replace with your actual demo):
+https://demo.example.com/demo_revision.db
+
+Notes for implementer
+- Keep the SM-2 implementation in a single domain package to make it well-tested and replaceable.
+- When importing SQLite, verify table names/columns match; if not, convert by mapping columns from JSON.
+- Use background isolates for heavy imports and database writes.
+
+Acceptance test steps (manual)
+- Open app -> Import demo DB -> paste demo URL -> Import success.
+- Home -> Daily review -> start session -> answer 10 cards -> end session -> verify review statistics and nextReview timestamps updated in DB.
+
+Deliver the prompt result as a complete repository or as clear step-by-step code generation instructions when returning scaffolded code. Keep documentation concise and include the commands to run tests and the app.
+
+End of prompt.

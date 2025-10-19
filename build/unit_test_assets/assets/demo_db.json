@@ -1,0 +1,83 @@
+{
+  "decks": [
+    {
+      "id": "deck-1",
+      "title": "Biology Basics",
+      "description": "Fundamental concepts in cell biology",
+      "createdAt": "2025-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "deck-2",
+      "title": "Programming Concepts",
+      "description": "Core computer science fundamentals",
+      "createdAt": "2025-10-01T00:00:00.000Z"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "deckId": "deck-1",
+      "type": "mcq",
+      "prompt": "Which organelle is known as the powerhouse of the cell?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "c1", "text": "Nucleus", "isCorrect": false},
+        {"id": "c2", "text": "Mitochondria", "isCorrect": true},
+        {"id": "c3", "text": "Ribosome", "isCorrect": false},
+        {"id": "c4", "text": "Golgi Apparatus", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "q2",
+      "deckId": "deck-1",
+      "type": "multi-select",
+      "prompt": "Which of the following are parts of a eukaryotic cell? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "c5", "text": "Nucleus", "isCorrect": true},
+        {"id": "c6", "text": "Cell wall (in plants)", "isCorrect": true},
+        {"id": "c7", "text": "Flagella (in bacteria)", "isCorrect": false},
+        {"id": "c8", "text": "Mitochondria", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "q3",
+      "deckId": "deck-1",
+      "type": "mcq",
+      "prompt": "What is the function of ribosomes?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "c9", "text": "DNA replication", "isCorrect": false},
+        {"id": "c10", "text": "Protein synthesis", "isCorrect": true},
+        {"id": "c11", "text": "Energy production", "isCorrect": false},
+        {"id": "c12", "text": "Lipid synthesis", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "q4",
+      "deckId": "deck-2",
+      "type": "mcq",
+      "prompt": "What is the time complexity of binary search?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "c13", "text": "O(n)", "isCorrect": false},
+        {"id": "c14", "text": "O(log n)", "isCorrect": true},
+        {"id": "c15", "text": "O(n²)", "isCorrect": false},
+        {"id": "c16", "text": "O(1)", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "q5",
+      "deckId": "deck-2",
+      "type": "multi-select",
+      "prompt": "Which are valid programming paradigms? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "c17", "text": "Object-oriented", "isCorrect": true},
+        {"id": "c18", "text": "Functional", "isCorrect": true},
+        {"id": "c19", "text": "Procedural", "isCorrect": true},
+        {"id": "c20", "text": "Circular", "isCorrect": false}
+      ]
+    }
+  ]
+}

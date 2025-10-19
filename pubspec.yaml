@@ -1,0 +1,49 @@
+name: revision_buddy
+description: A spaced repetition flashcard app with MCQ and multi-select support.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State management
+  flutter_riverpod: ^2.4.9
+  
+  # Database
+  drift: ^2.14.0
+  sqlite3_flutter_libs: ^0.5.18
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  
+  # JSON serialization
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+  
+  # HTTP
+  http: ^1.1.2
+  
+  # UUID generation
+  uuid: ^4.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  
+  # Code generation
+  build_runner: ^2.4.7
+  drift_dev: ^2.14.0
+  json_serializable: ^6.7.1
+  freezed: ^2.4.6
+  
+  # Testing
+  mocktail: ^1.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/demo_db.json

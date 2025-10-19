@@ -1,0 +1,10 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:revision_buddy/domain/models.dart",
+    "package:revision_buddy/domain/providers.dart",
+    "package:revision_buddy/domain/spaced_repetition.dart"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter_test/flutter_test.dart",
+    "package:revision_buddy/domain/spaced_repetition.dart"
+  ]
+}

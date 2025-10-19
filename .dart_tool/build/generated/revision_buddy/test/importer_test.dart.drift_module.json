@@ -1,0 +1,9 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter_test/flutter_test.dart",
+    "package:revision_buddy/data/database.dart",
+    "package:revision_buddy/data/importer.dart",
+    "package:drift/native.dart"
+  ]
+}

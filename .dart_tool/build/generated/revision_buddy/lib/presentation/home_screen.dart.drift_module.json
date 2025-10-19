@@ -1,0 +1,12 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:revision_buddy/domain/providers.dart",
+    "package:revision_buddy/presentation/import_screen.dart",
+    "package:revision_buddy/presentation/deck_screen.dart",
+    "package:revision_buddy/presentation/review_screen.dart",
+    "package:revision_buddy/presentation/settings_screen.dart"
+  ]
+}

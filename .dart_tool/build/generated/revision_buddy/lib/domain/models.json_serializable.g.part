@@ -1,0 +1,120 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$DeckModelImpl _$$DeckModelImplFromJson(Map<String, dynamic> json) =>
+    _$DeckModelImpl(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      questionCount: (json['questionCount'] as num?)?.toInt() ?? 0,
+      dueCount: (json['dueCount'] as num?)?.toInt() ?? 0,
+    );
+
+Map<String, dynamic> _$$DeckModelImplToJson(_$DeckModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'questionCount': instance.questionCount,
+      'dueCount': instance.dueCount,
+    };
+
+_$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionModelImpl(
+      id: json['id'] as String,
+      deckId: json['deckId'] as String,
+      type: $enumDecode(_$QuestionTypeEnumMap, json['type']),
+      prompt: json['prompt'] as String,
+      choices: (json['choices'] as List<dynamic>)
+          .map((e) => ChoiceModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      metadata: json['metadata'] as String? ?? '{}',
+      lastReview: json['lastReview'] == null
+          ? null
+          : ReviewModel.fromJson(json['lastReview'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'deckId': instance.deckId,
+      'type': _$QuestionTypeEnumMap[instance.type]!,
+      'prompt': instance.prompt,
+      'choices': instance.choices,
+      'metadata': instance.metadata,
+      'lastReview': instance.lastReview,
+    };
+
+const _$QuestionTypeEnumMap = {
+  QuestionType.mcq: 'mcq',
+  QuestionType.multiSelect: 'multi-select',
+};
+
+_$ChoiceModelImpl _$$ChoiceModelImplFromJson(Map<String, dynamic> json) =>
+    _$ChoiceModelImpl(
+      id: json['id'] as String,
+      text: json['text'] as String,
+      isCorrect: json['isCorrect'] as bool,
+      isSelected: json['isSelected'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$ChoiceModelImplToJson(_$ChoiceModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'text': instance.text,
+      'isCorrect': instance.isCorrect,
+      'isSelected': instance.isSelected,
+    };
+
+_$ReviewModelImpl _$$ReviewModelImplFromJson(Map<String, dynamic> json) =>
+    _$ReviewModelImpl(
+      id: json['id'] as String,
+      questionId: json['questionId'] as String,
+      reviewedAt: DateTime.parse(json['reviewedAt'] as String),
+      quality: (json['quality'] as num).toInt(),
+      interval: (json['interval'] as num).toInt(),
+      repetition: (json['repetition'] as num).toInt(),
+      easiness: (json['easiness'] as num).toDouble(),
+      nextReview: DateTime.parse(json['nextReview'] as String),
+    );
+
+Map<String, dynamic> _$$ReviewModelImplToJson(_$ReviewModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'questionId': instance.questionId,
+      'reviewedAt': instance.reviewedAt.toIso8601String(),
+      'quality': instance.quality,
+      'interval': instance.interval,
+      'repetition': instance.repetition,
+      'easiness': instance.easiness,
+      'nextReview': instance.nextReview.toIso8601String(),
+    };
+
+_$ReviewSessionStatsImpl _$$ReviewSessionStatsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReviewSessionStatsImpl(
+      totalQuestions: (json['totalQuestions'] as num?)?.toInt() ?? 0,
+      correctAnswers: (json['correctAnswers'] as num?)?.toInt() ?? 0,
+      partialCorrect: (json['partialCorrect'] as num?)?.toInt() ?? 0,
+      incorrectAnswers: (json['incorrectAnswers'] as num?)?.toInt() ?? 0,
+      averageQuality: (json['averageQuality'] as num?)?.toDouble() ?? 0.0,
+      startedAt: DateTime.parse(json['startedAt'] as String),
+      completedAt: json['completedAt'] == null
+          ? null
+          : DateTime.parse(json['completedAt'] as String),
+    );
+
+Map<String, dynamic> _$$ReviewSessionStatsImplToJson(
+        _$ReviewSessionStatsImpl instance) =>
+    <String, dynamic>{
+      'totalQuestions': instance.totalQuestions,
+      'correctAnswers': instance.correctAnswers,
+      'partialCorrect': instance.partialCorrect,
+      'incorrectAnswers': instance.incorrectAnswers,
+      'averageQuality': instance.averageQuality,
+      'startedAt': instance.startedAt.toIso8601String(),
+      'completedAt': instance.completedAt?.toIso8601String(),
+    };

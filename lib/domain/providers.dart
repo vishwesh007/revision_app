@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:revision_buddy/data/database.dart';
 import 'package:revision_buddy/data/importer.dart';
 import 'package:revision_buddy/domain/models.dart';
+import 'package:revision_buddy/services/notification_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:drift/drift.dart' as drift;
 import 'spaced_repetition.dart';
@@ -16,6 +18,103 @@ final importerProvider = Provider<DatabaseImporter>((ref) {
   final database = ref.watch(databaseProvider);
   return DatabaseImporter(database);
 });
+
+// Notification service provider
+final notificationServiceProvider = Provider<NotificationService>((ref) {
+  return NotificationService();
+});
+
+// Shared preferences provider
+final sharedPreferencesProvider = FutureProvider<SharedPreferences>((ref) async {
+  return await SharedPreferences.getInstance();
+});
+
+// Notification settings provider
+class NotificationSettings {
+  final bool enabled;
+  final int hour;
+  final int minute;
+
+  NotificationSettings({
+    required this.enabled,
+    required this.hour,
+    required this.minute,
+  });
+
+  NotificationSettings copyWith({
+    bool? enabled,
+    int? hour,
+    int? minute,
+  }) {
+    return NotificationSettings(
+      enabled: enabled ?? this.enabled,
+      hour: hour ?? this.hour,
+      minute: minute ?? this.minute,
+    );
+  }
+}
+
+final notificationSettingsProvider = StateNotifierProvider<NotificationSettingsNotifier, AsyncValue<NotificationSettings>>((ref) {
+  return NotificationSettingsNotifier(ref);
+});
+
+class NotificationSettingsNotifier extends StateNotifier<AsyncValue<NotificationSettings>> {
+  final Ref ref;
+
+  NotificationSettingsNotifier(this.ref) : super(const AsyncValue.loading()) {
+    _loadSettings();
+  }
+
+  Future<void> _loadSettings() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final enabled = prefs.getBool('notifications_enabled') ?? false;
+      final hour = prefs.getInt('notification_hour') ?? 9;
+      final minute = prefs.getInt('notification_minute') ?? 0;
+
+      state = AsyncValue.data(NotificationSettings(
+        enabled: enabled,
+        hour: hour,
+        minute: minute,
+      ));
+    } catch (e, stack) {
+      state = AsyncValue.error(e, stack);
+    }
+  }
+
+  Future<void> updateSettings({
+    bool? enabled,
+    int? hour,
+    int? minute,
+  }) async {
+    final currentSettings = state.value;
+    if (currentSettings == null) return;
+
+    final newSettings = currentSettings.copyWith(
+      enabled: enabled,
+      hour: hour,
+      minute: minute,
+    );
+
+    state = AsyncValue.data(newSettings);
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('notifications_enabled', newSettings.enabled);
+    await prefs.setInt('notification_hour', newSettings.hour);
+    await prefs.setInt('notification_minute', newSettings.minute);
+
+    final notificationService = ref.read(notificationServiceProvider);
+
+    if (newSettings.enabled) {
+      await notificationService.scheduleDailyNotification(
+        hour: newSettings.hour,
+        minute: newSettings.minute,
+      );
+    } else {
+      await notificationService.cancelAllNotifications();
+    }
+  }
+}
 
 // Decks provider
 final decksProvider = StreamProvider<List<DeckModel>>((ref) async* {

@@ -9,6 +9,7 @@ A Flutter application for spaced repetition learning with support for MCQ (Multi
 - ✅ **Demo DB Import**: Import demo databases from bundled assets or URLs
 - ✅ **Local Storage**: SQLite database with Drift ORM
 - ✅ **Review Sessions**: Track progress with accuracy and statistics
+- ✅ **Daily Notifications**: Schedule reminders to maintain your learning streak (Android)
 - ✅ **Clean Architecture**: Separated presentation, domain, and data layers
 - ✅ **Tests**: Unit and widget tests for core functionality
 
@@ -227,6 +228,37 @@ final _urlController = TextEditingController(
 
 Replace `assets/demo_db.json` with your own JSON file following the format above.
 
+## Notifications
+
+### Android
+
+The app supports **daily reminder notifications** on Android to help you maintain your learning streak!
+
+#### Setup:
+1. Open the app and go to **Settings**
+2. Toggle **"Daily Reminders"** ON
+3. Grant notification permission when prompted
+4. Tap **"Reminder Time"** to choose your preferred time
+5. Optionally, tap **"Test Notification"** to verify it works
+
+#### Features:
+- ✅ Schedule daily reminders at any time
+- ✅ Persistent across app restarts
+- ✅ Works after device reboot
+- ✅ Android 13+ permission handling
+- ✅ Test notification feature
+
+#### Requirements:
+- Android 5.0+ (API 21+)
+- Notification permission (Android 13+, automatically requested)
+- For some devices (Xiaomi, Oppo, etc.), enable "Autostart" permission
+
+For detailed troubleshooting, see `NOTIFICATIONS_GUIDE.md`.
+
+### iOS
+
+iOS notification support coming soon! The app currently works great on iOS, just without daily reminders.
+
 ## CI/CD
 
 GitHub Actions workflow runs on every push and PR:
@@ -292,12 +324,14 @@ Contributions welcome! Please:
 
 ## Roadmap
 
+- [x] Notifications for daily reviews (Android) ✨ **NEW!**
+- [ ] iOS notification support
 - [ ] Cloud sync (Firebase/REST API)
 - [ ] Anki deck import (.apkg)
 - [ ] Export sessions to CSV
 - [ ] Dark mode
-- [ ] Notifications for daily reviews
 - [ ] Statistics graphs and charts
+- [ ] Rich notifications with review actions
 
 ---
 

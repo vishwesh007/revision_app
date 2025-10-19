@@ -7,12 +7,122 @@ class SettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final notificationSettings = ref.watch(notificationSettingsProvider);
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
       ),
       body: ListView(
         children: [
+          const _SectionHeader(title: 'Notifications'),
+          
+          // Notification settings
+          notificationSettings.when(
+            data: (settings) => Column(
+              children: [
+                SwitchListTile(
+                  secondary: const Icon(Icons.notifications_active),
+                  title: const Text('Daily Reminders'),
+                  subtitle: Text(
+                    settings.enabled
+                        ? 'Enabled at ${_formatTime(settings.hour, settings.minute)}'
+                        : 'Get reminded to review your flashcards',
+                  ),
+                  value: settings.enabled,
+                  onChanged: (value) async {
+                    if (value) {
+                      // Request permission when enabling
+                      final notificationService = ref.read(notificationServiceProvider);
+                      final hasPermission = await notificationService.requestPermission();
+                      
+                      if (hasPermission) {
+                        await ref.read(notificationSettingsProvider.notifier).updateSettings(
+                          enabled: true,
+                        );
+                        
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Daily reminders enabled!'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        }
+                      } else {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Notification permission denied'),
+                              backgroundColor: Colors.orange,
+                            ),
+                          );
+                        }
+                      }
+                    } else {
+                      await ref.read(notificationSettingsProvider.notifier).updateSettings(
+                        enabled: false,
+                      );
+                      
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Daily reminders disabled'),
+                          ),
+                        );
+                      }
+                    }
+                  },
+                ),
+                
+                if (settings.enabled)
+                  ListTile(
+                    leading: const Icon(Icons.access_time),
+                    title: const Text('Reminder Time'),
+                    subtitle: Text(_formatTime(settings.hour, settings.minute)),
+                    trailing: const Icon(Icons.edit),
+                    onTap: () => _showTimePicker(context, ref, settings),
+                  ),
+                  
+                ListTile(
+                  leading: const Icon(Icons.send),
+                  title: const Text('Test Notification'),
+                  subtitle: const Text('Send a test notification now'),
+                  onTap: () async {
+                    final notificationService = ref.read(notificationServiceProvider);
+                    final hasPermission = await notificationService.hasPermission();
+                    
+                    if (hasPermission) {
+                      await notificationService.sendTestNotification();
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Test notification sent!'),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                      }
+                    } else {
+                      if (context.mounted) {
+                        _showPermissionDialog(context, ref);
+                      }
+                    }
+                  },
+                ),
+              ],
+            ),
+            loading: () => const Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(child: CircularProgressIndicator()),
+            ),
+            error: (_, __) => const ListTile(
+              leading: Icon(Icons.error_outline),
+              title: Text('Failed to load notification settings'),
+            ),
+          ),
+          
+          const Divider(),
+          
           const _SectionHeader(title: 'Database'),
           ListTile(
             leading: const Icon(Icons.info_outline),
@@ -98,6 +208,60 @@ class SettingsScreen extends ConsumerWidget {
             leading: Icon(Icons.schedule),
             title: Text('Review Intervals'),
             subtitle: Text('Automatically adjusted based on your performance'),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  static String _formatTime(int hour, int minute) {
+    final period = hour >= 12 ? 'PM' : 'AM';
+    final hour12 = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour);
+    return '${hour12.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $period';
+  }
+  
+  void _showTimePicker(BuildContext context, WidgetRef ref, NotificationSettings settings) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: settings.hour, minute: settings.minute),
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+          child: child!,
+        );
+      },
+    );
+    
+    if (picked != null) {
+      await ref.read(notificationSettingsProvider.notifier).updateSettings(
+        hour: picked.hour,
+        minute: picked.minute,
+      );
+      
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Reminder time updated to ${_formatTime(picked.hour, picked.minute)}'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    }
+  }
+  
+  void _showPermissionDialog(BuildContext context, WidgetRef ref) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Notification Permission Required'),
+        content: const Text(
+          'To send test notifications, please enable notification permissions. '
+          'You can enable them from the "Daily Reminders" toggle above.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
           ),
         ],
       ),

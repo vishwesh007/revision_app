@@ -1,4 +1,4 @@
-Build a complete Flutter application for 'Revision Buddy' — a revision/flashcard app that supports spaced repetition (SM-2), fetches demo DB files from a demo server, and handles both single-answer MCQ and multiple-select questions. The AI/engineer reading this prompt must deliver a full, runnable codebase and documentation. Aim for production-quality structure, tests, and a small sample demo DB importer.
+Build a complete Flutter application for 'Revision Buddy' — a revision/flashcard app that supports spaced repetition (SM-2), fetches demo DB files from a demo server, and handles both single-answer MCQ and multiple-select questions. The AI/engineer reading this prompt must deliver a full, runnable codebase and documentation. Aim for production-quality structure, tests, and a small sample demo DB importer. Ensure all platforms are covered.
 
 High-level goals (deliverables)
 - A Flutter app (latest stable Flutter) with a clean architecture (presentation, domain, data).
@@ -19,8 +19,35 @@ Important implementation notes & choices (recommended)
 - State management: Riverpod (flutter_riverpod) for simplicity and testability.
 - Local DB: Drift (moor) + sqlite3_flutter_libs. Use Drift's migration and import features; provide a lightweight importer for raw JSON fallback.
 - Background scheduling & notifications: flutter_local_notifications (optional) and use native scheduled notifications for reminders.
-- Platform targets: Android and iOS; keep web as optional with fallback storage (shared_preferences) if required.
+- Platform targets: Android, iOS, Web, Windows, macOS, and Linux. Use conditional imports for platform-specific code (e.g., native DB vs web storage).
 - Tests: use package:test and flutter_test. Provide unit tests for SM-2 and import logic; widget test for the question screen.
+
+Platform-specific requirements & permissions:
+- **Android (android/app/src/main/AndroidManifest.xml)**:
+  - INTERNET permission (for downloading demo DB from URL)
+  - POST_NOTIFICATIONS permission (Android 13+, for local notifications - optional)
+  - SCHEDULE_EXACT_ALARM permission (Android 12+, for exact scheduling - optional)
+  - Request runtime permissions for notifications if using flutter_local_notifications
+  
+- **iOS (ios/Runner/Info.plist)**:
+  - NSAppTransportSecurity with NSAllowsArbitraryLoads (if using HTTP, prefer HTTPS)
+  - NSUserNotificationsUsageDescription (for local notifications - optional)
+  - Background modes: fetch, processing (if implementing background sync - optional)
+  
+- **Web**:
+  - Use IndexedDB or localStorage for persistence (Drift has web support)
+  - Service worker for offline capability (optional)
+  - CORS headers required on demo DB server
+  
+- **Windows/macOS/Linux**:
+  - File system access for SQLite database
+  - No special permissions required for basic functionality
+  
+- **Permissions handling**:
+  - Request permissions at appropriate times (just-in-time, not on app launch)
+  - Provide clear explanations for why permissions are needed
+  - Handle permission denial gracefully with fallback behavior
+  - For notifications: explain benefit of daily review reminders before requesting permission
 
 Data model (SQL/Drift schema)
 - decks

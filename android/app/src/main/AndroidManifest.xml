@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for importing demo database from URL -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
         android:label="revision_buddy"
         android:name="${applicationName}"

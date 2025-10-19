@@ -294,9 +294,7 @@ class $QuestionsTable extends Questions
   @override
   late final GeneratedColumn<String> type = GeneratedColumn<String>(
       'type', aliasedName, false,
-      check: () => type.isIn(['mcq', 'multi-select']),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _promptMeta = const VerificationMeta('prompt');
   @override
   late final GeneratedColumn<String> prompt = GeneratedColumn<String>(

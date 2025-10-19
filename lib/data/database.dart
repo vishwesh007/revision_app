@@ -1,11 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // Run `flutter pub run build_runner build` to regenerate
 
-import 'dart:io';
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as p;
+
+// Conditional import to select the correct database connection for each platform.
+import 'connection_io.dart'
+  if (dart.library.html) 'connection_web.dart' as connection_impl;
 
 part 'database.g.dart';
 
@@ -60,7 +60,7 @@ class Reviews extends Table {
 
 @DriftDatabase(tables: [Decks, Questions, Choices, Reviews])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  AppDatabase() : super(connection_impl.openConnection());
   
   // Constructor for testing
   AppDatabase.forTesting(super.e);
@@ -158,10 +158,4 @@ class AppDatabase extends _$AppDatabase {
   }
 }
 
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'revision_buddy.db'));
-    return NativeDatabase(file);
-  });
-}
+// platform-specific connection implemented in connection_io.dart and connection_web.dart

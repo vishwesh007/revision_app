@@ -42,6 +42,65 @@ flutter pub run build_runner build --delete-conflicting-outputs
 flutter run
 ```
 
+## Platform-Specific Setup
+
+### Android
+
+**Permissions**: The app requires INTERNET permission for importing demo databases from URLs. This is already configured in `android/app/src/main/AndroidManifest.xml`.
+
+To build APK:
+```bash
+flutter build apk --release
+```
+
+To build App Bundle:
+```bash
+flutter build appbundle --release
+```
+
+### iOS
+
+**Permissions**: Network access is configured in `ios/Runner/Info.plist` to allow HTTP/HTTPS requests for demo DB import.
+
+To build for iOS (requires macOS):
+```bash
+flutter build ios --release
+```
+
+**Note**: You may need to configure code signing in Xcode before building.
+
+### Web
+
+The app supports web deployment with IndexedDB for local storage. No special permissions required.
+
+To build for web:
+```bash
+flutter build web --release
+```
+
+To run in Chrome:
+```bash
+flutter run -d chrome
+```
+
+To run in Edge:
+```bash
+flutter run -d edge
+```
+
+Deployed web builds can be served from any static hosting (Firebase Hosting, GitHub Pages, Netlify, etc.).
+
+### Windows/macOS/Linux Desktop
+
+No special permissions required. SQLite database is stored in the app's documents directory.
+
+To build:
+```bash
+flutter build windows  # Windows
+flutter build macos    # macOS
+flutter build linux    # Linux
+```
+
 ## Running Tests
 
 Run all tests:

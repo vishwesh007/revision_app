@@ -3,7 +3,6 @@
   "imports": [
     "package:flutter/material.dart",
     "package:flutter_riverpod/flutter_riverpod.dart",
-    "package:revision_buddy/data/importer.dart",
     "package:revision_buddy/domain/providers.dart"
   ]
 }

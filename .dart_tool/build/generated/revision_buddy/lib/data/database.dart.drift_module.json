@@ -7,7 +7,7 @@
       },
       "declaration": {
         "source_uri": "package:revision_buddy/data/database.dart",
-        "offset": 1823,
+        "offset": 1781,
         "name": "AppDatabase"
       },
       "references": [
@@ -265,20 +265,7 @@
           "overriddenJsonName": null,
           "referenceName": null,
           "documentationComment": null,
-          "constraints": [
-            {
-              "type": "check",
-              "dart_expression": {
-                "elements": [
-                  {
-                    "lexeme": "type",
-                    "tag": "type"
-                  },
-                  ".isIn(['mcq','multi-select'])"
-                ]
-              }
-            }
-          ],
+          "constraints": [],
           "customConstraints": null
         },
         {
@@ -290,7 +277,7 @@
           "nameInDart": "prompt",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 826,
+            "offset": 784,
             "name": "prompt"
           },
           "typeConverter": null,
@@ -311,7 +298,7 @@
           "nameInDart": "metadata",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 864,
+            "offset": 822,
             "name": "metadata"
           },
           "typeConverter": null,
@@ -361,7 +348,7 @@
       },
       "declaration": {
         "source_uri": "package:revision_buddy/data/database.dart",
-        "offset": 1004,
+        "offset": 962,
         "name": "Choices"
       },
       "references": [
@@ -381,7 +368,7 @@
           "nameInDart": "id",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1046,
+            "offset": 1004,
             "name": "id"
           },
           "typeConverter": null,
@@ -402,7 +389,7 @@
           "nameInDart": "questionId",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1080,
+            "offset": 1038,
             "name": "questionId"
           },
           "typeConverter": null,
@@ -437,7 +424,7 @@
           "nameInDart": "choiceText",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1149,
+            "offset": 1107,
             "name": "choiceText"
           },
           "typeConverter": null,
@@ -458,7 +445,7 @@
           "nameInDart": "isCorrect",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1191,
+            "offset": 1149,
             "name": "isCorrect"
           },
           "typeConverter": null,
@@ -499,7 +486,7 @@
       },
       "declaration": {
         "source_uri": "package:revision_buddy/data/database.dart",
-        "offset": 1301,
+        "offset": 1259,
         "name": "Reviews"
       },
       "references": [
@@ -519,7 +506,7 @@
           "nameInDart": "id",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1343,
+            "offset": 1301,
             "name": "id"
           },
           "typeConverter": null,
@@ -540,7 +527,7 @@
           "nameInDart": "questionId",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1377,
+            "offset": 1335,
             "name": "questionId"
           },
           "typeConverter": null,
@@ -575,7 +562,7 @@
           "nameInDart": "reviewedAt",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1450,
+            "offset": 1408,
             "name": "reviewedAt"
           },
           "typeConverter": null,
@@ -596,7 +583,7 @@
           "nameInDart": "quality",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1495,
+            "offset": 1453,
             "name": "quality"
           },
           "typeConverter": null,
@@ -617,7 +604,7 @@
           "nameInDart": "interval",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1536,
+            "offset": 1494,
             "name": "interval"
           },
           "typeConverter": null,
@@ -638,7 +625,7 @@
           "nameInDart": "repetition",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1578,
+            "offset": 1536,
             "name": "repetition"
           },
           "typeConverter": null,
@@ -659,7 +646,7 @@
           "nameInDart": "easiness",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1623,
+            "offset": 1581,
             "name": "easiness"
           },
           "typeConverter": null,
@@ -680,7 +667,7 @@
           "nameInDart": "nextReview",
           "declaration": {
             "source_uri": "package:revision_buddy/data/database.dart",
-            "offset": 1667,
+            "offset": 1625,
             "name": "nextReview"
           },
           "typeConverter": null,

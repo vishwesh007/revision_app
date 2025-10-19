@@ -39,7 +39,7 @@ class DatabaseImporter {
     }
   }
 
-  /// Import from URL (downloads JSON)
+  /// Import from URL (downloads JSON or SQLite)
   Future<ImportResult> importFromUrl(String url) async {
     try {
       final response = await http.get(Uri.parse(url)).timeout(
@@ -53,12 +53,36 @@ class DatabaseImporter {
         );
       }
 
+      // Check file extension in URL
+      final uri = Uri.parse(url);
+      final extension = p.extension(uri.path).toLowerCase();
+      
+      // Determine format by extension first
+      if (extension == '.db' || extension == '.sqlite') {
+        return await _importFromSqliteBytes(response.bodyBytes);
+      }
+      
+      // Check content type
       final contentType = response.headers['content-type'] ?? '';
       
-      if (contentType.contains('application/json')) {
+      // Try to detect SQLite magic number (first 16 bytes should be "SQLite format 3\0")
+      if (response.bodyBytes.length >= 16) {
+        final header = String.fromCharCodes(response.bodyBytes.sublist(0, 15));
+        if (header == 'SQLite format 3') {
+          return await _importFromSqliteBytes(response.bodyBytes);
+        }
+      }
+      
+      // Default to JSON if content-type suggests it or no clear indicator
+      if (contentType.contains('application/json') || contentType.contains('text') || extension == '.json') {
         return await _importFromJson(response.body);
-      } else {
-        // Assume SQLite file - save and try to import
+      }
+      
+      // Last attempt: try JSON first, fall back to SQLite
+      try {
+        return await _importFromJson(response.body);
+      } catch (e) {
+        // If JSON parsing fails, try SQLite
         return await _importFromSqliteBytes(response.bodyBytes);
       }
     } on SocketException {
@@ -93,17 +117,30 @@ class DatabaseImporter {
 
       final extension = p.extension(filePath).toLowerCase();
       
-      if (extension == '.json') {
+      // First, try to detect by file content (SQLite magic number)
+      final bytes = await file.readAsBytes();
+      if (bytes.length >= 16) {
+        final header = String.fromCharCodes(bytes.sublist(0, 15));
+        if (header == 'SQLite format 3') {
+          return await _importFromSqliteBytes(bytes);
+        }
+      }
+      
+      // Then use extension as hint
+      if (extension == '.db' || extension == '.sqlite') {
+        return await _importFromSqliteBytes(bytes);
+      } else if (extension == '.json') {
         final jsonString = await file.readAsString();
         return await _importFromJson(jsonString);
-      } else if (extension == '.db' || extension == '.sqlite') {
-        final bytes = await file.readAsBytes();
-        return await _importFromSqliteBytes(bytes);
       } else {
-        return ImportResult(
-          success: false,
-          message: 'Unsupported file type: $extension',
-        );
+        // Unknown extension - try JSON first, then SQLite
+        try {
+          final jsonString = String.fromCharCodes(bytes);
+          return await _importFromJson(jsonString);
+        } catch (e) {
+          // If JSON fails, try SQLite
+          return await _importFromSqliteBytes(bytes);
+        }
       }
     } catch (e) {
       return ImportResult(
@@ -197,7 +234,19 @@ class DatabaseImporter {
         decksImported: decksCount,
         questionsImported: questionsCount,
       );
+    } on FormatException {
+      return ImportResult(
+        success: false,
+        message: 'Invalid JSON format. If this is a SQLite file (.db or .sqlite), make sure it has the correct file extension.',
+      );
     } catch (e) {
+      final errorMsg = e.toString();
+      if (errorMsg.contains('sqlite') || errorMsg.contains('SQLite') || errorMsg.contains('1555')) {
+        return ImportResult(
+          success: false,
+          message: 'This appears to be a SQLite database file, not JSON. Please use a .db or .sqlite file extension, or import it using the file picker.',
+        );
+      }
       return ImportResult(
         success: false,
         message: 'Failed to parse JSON: $e',

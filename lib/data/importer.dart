@@ -205,24 +205,95 @@ class DatabaseImporter {
     }
   }
 
-  /// Import from SQLite file bytes (placeholder - advanced feature)
+  /// Import from SQLite file bytes
   Future<ImportResult> _importFromSqliteBytes(List<int> bytes) async {
     try {
       // Save the SQLite file temporarily
       final tempDir = await getTemporaryDirectory();
-      final tempFile = File(p.join(tempDir.path, 'temp_import.db'));
+      final tempFile = File(p.join(tempDir.path, 'temp_import_${DateTime.now().millisecondsSinceEpoch}.db'));
       await tempFile.writeAsBytes(bytes);
 
-      // For now, return a message that SQLite import is not yet implemented
-      // In production, you would:
-      // 1. Open the SQLite file
-      // 2. Verify schema
-      // 3. Read data and insert into main database
-      
-      return ImportResult(
-        success: false,
-        message: 'SQLite import not yet implemented. Please use JSON format.',
-      );
+      // Import data from the SQLite file
+      int decksCount = 0;
+      int questionsCount = 0;
+
+      try {
+        // Open the imported database
+        final importDb = AppDatabase.fromFile(tempFile);
+        
+        // Import decks
+        final decks = await importDb.select(importDb.decks).get();
+        for (final deck in decks) {
+          // Check for duplicates
+          final existing = await database.getDeckById(deck.id);
+          if (existing != null) continue;
+
+          await database.insertDeck(
+            DecksCompanion(
+              id: Value(deck.id),
+              title: Value(deck.title),
+              description: Value(deck.description),
+              createdAt: Value(deck.createdAt),
+            ),
+          );
+          decksCount++;
+        }
+
+        // Import questions
+        final questions = await importDb.select(importDb.questions).get();
+        for (final question in questions) {
+          // Check for duplicates
+          final existing = await database.getQuestionById(question.id);
+          if (existing != null) continue;
+
+          await database.insertQuestion(
+            QuestionsCompanion(
+              id: Value(question.id),
+              deckId: Value(question.deckId),
+              type: Value(question.type),
+              prompt: Value(question.prompt),
+              metadata: Value(question.metadata),
+            ),
+          );
+          questionsCount++;
+
+          // Import choices for this question
+          final choices = await (importDb.select(importDb.choices)
+                ..where((c) => c.questionId.equals(question.id)))
+              .get();
+          
+          for (final choice in choices) {
+            await database.insertChoice(
+              ChoicesCompanion(
+                id: Value(choice.id),
+                questionId: Value(choice.questionId),
+                choiceText: Value(choice.choiceText),
+                isCorrect: Value(choice.isCorrect),
+              ),
+            );
+          }
+        }
+
+        // Close and clean up
+        await importDb.close();
+        await tempFile.delete();
+
+        return ImportResult(
+          success: true,
+          message: 'Successfully imported $decksCount decks and $questionsCount questions from SQLite file',
+          decksImported: decksCount,
+          questionsImported: questionsCount,
+        );
+      } catch (e) {
+        // Clean up on error
+        if (await tempFile.exists()) {
+          await tempFile.delete();
+        }
+        return ImportResult(
+          success: false,
+          message: 'Invalid SQLite database format: $e',
+        );
+      }
     } catch (e) {
       return ImportResult(
         success: false,

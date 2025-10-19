@@ -34,6 +34,9 @@ dependencies:
   permission_handler: ^11.3.0
   timezone: ^0.9.2
   shared_preferences: ^2.2.2
+  
+  # File picker
+  file_picker: ^8.0.0+1
 
 dev_dependencies:
   flutter_test:

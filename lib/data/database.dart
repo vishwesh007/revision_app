@@ -1,7 +1,9 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // Run `flutter pub run build_runner build` to regenerate
 
+import 'dart:io';
 import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 
 // Conditional import to select the correct database connection for each platform.
 import 'connection_io.dart'
@@ -64,6 +66,13 @@ class AppDatabase extends _$AppDatabase {
   
   // Constructor for testing
   AppDatabase.forTesting(super.e);
+  
+  // Constructor for importing from a specific file
+  AppDatabase.fromFile(File file) : super(
+    LazyDatabase(() async {
+      return NativeDatabase(file);
+    })
+  );
 
   @override
   int get schemaVersion => 1;

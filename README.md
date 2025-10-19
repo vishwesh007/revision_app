@@ -148,19 +148,53 @@ assets/
 
 ## Importing Demo Database
 
-### Option 1: Bundled Demo (Quick Start)
+The app supports **three flexible import methods** with multiple file formats!
+
+### 🎯 Import Methods
+
+#### Option 1: Bundled Demo (Quick Start)
 
 1. Open the app
 2. Tap **"Import Demo DB"** button
 3. Select **"Import Bundled Demo"**
 4. Done! Sample questions are now available
 
-### Option 2: From URL
+#### Option 2: From File (NEW! ✨)
+
+Import your own database files from device storage:
 
 1. Open the app
 2. Tap **"Import Demo DB"**
-3. Enter a JSON file URL (or use the prefilled demo URL)
+3. Tap **"Choose File"**
+4. Select your `.json`, `.db`, or `.sqlite` file
+5. Questions are imported!
+
+**Supported formats:**
+- `.json` - Human-readable text format (recommended for creating/editing)
+- `.db` - SQLite database file
+- `.sqlite` - SQLite database file (alternative extension)
+
+#### Option 3: From URL
+
+Download databases from the internet:
+
+1. Open the app
+2. Tap **"Import Demo DB"**
+3. Enter a JSON or SQLite file URL
 4. Tap **"Import from URL"**
+5. Database downloads and imports automatically
+
+### 📋 Copy JSON Example (NEW! ✨)
+
+Want to create your own database? Use the built-in template!
+
+1. Open **Import Demo DB** screen
+2. Scroll to **"JSON Format Example"**
+3. Tap the **"Copy"** button
+4. Paste into any text editor
+5. Modify decks, questions, and choices
+6. Save as `.json` file
+7. Import using File Picker!
 
 ### Demo DB JSON Format
 

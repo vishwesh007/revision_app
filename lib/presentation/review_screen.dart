@@ -419,6 +419,29 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Keep the question visible on the answer/feedback side
+          Chip(
+            label: Text(_currentQuestion.type.displayName),
+            avatar: Icon(
+              _currentQuestion.type == QuestionType.mcq
+                  ? Icons.radio_button_checked
+                  : Icons.check_box,
+              size: 16,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Card(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                _currentQuestion.prompt,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+          ).animate().fadeIn(duration: 150.ms),
+          const SizedBox(height: 16),
+
           Card(
             color: _isCorrect ? Colors.green.shade50 : Colors.orange.shade50,
             child: Padding(

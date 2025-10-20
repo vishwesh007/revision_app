@@ -37,11 +37,22 @@ dependencies:
   
   # File picker
   file_picker: ^8.0.0+1
+  
+  # App icon generator
+  flutter_launcher_icons: ^0.13.1
+  
+  # Animations & Effects
+  flutter_animate: ^4.5.0
+  lottie: ^3.1.0
+  shimmer: ^3.0.0
+  confetti: ^0.7.0
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
+  image: ^4.1.7
   
   # Code generation
   build_runner: ^2.4.7
@@ -56,3 +67,11 @@ flutter:
   uses-material-design: true
   assets:
     - assets/demo_db.json
+    - assets/icon/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/icon/icon.png
+  adaptive_icon_background: "#4F46E5"
+  adaptive_icon_foreground: assets/icon/icon_foreground.png

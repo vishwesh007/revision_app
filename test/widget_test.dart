@@ -15,6 +15,10 @@ void main() {
     // Build our app inside a ProviderScope and trigger a frame.
     await tester.pumpWidget(const ProviderScope(child: RevisionBuddyApp()));
 
+    // Pump a few frames to start animations but don't wait for infinite repeating ones
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
     // Verify that the AppBar title is present.
     expect(find.text('Revision Buddy'), findsOneWidget);
   });

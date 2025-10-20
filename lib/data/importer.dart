@@ -23,8 +23,15 @@ class ImportResult {
 
 class DatabaseImporter {
   final AppDatabase database;
+  final http.Client httpClient;
+  final Future<Directory> Function() tempDirProvider;
 
-  DatabaseImporter(this.database);
+  DatabaseImporter(
+    this.database, {
+    http.Client? httpClient,
+    Future<Directory> Function()? tempDirProvider,
+  })  : httpClient = httpClient ?? http.Client(),
+        tempDirProvider = tempDirProvider ?? getTemporaryDirectory;
 
   /// Import from bundled asset
   Future<ImportResult> importFromAsset(String assetPath) async {
@@ -42,7 +49,7 @@ class DatabaseImporter {
   /// Import from URL (downloads JSON or SQLite)
   Future<ImportResult> importFromUrl(String url) async {
     try {
-      final response = await http.get(Uri.parse(url)).timeout(
+      final response = await httpClient.get(Uri.parse(url)).timeout(
         const Duration(seconds: 30),
       );
 
@@ -258,18 +265,18 @@ class DatabaseImporter {
   Future<ImportResult> _importFromSqliteBytes(List<int> bytes) async {
     try {
       // Save the SQLite file temporarily
-      final tempDir = await getTemporaryDirectory();
+      final tempDir = await tempDirProvider();
       final tempFile = File(p.join(tempDir.path, 'temp_import_${DateTime.now().millisecondsSinceEpoch}.db'));
       await tempFile.writeAsBytes(bytes);
 
       // Import data from the SQLite file
       int decksCount = 0;
       int questionsCount = 0;
-
+      AppDatabase? importDb;
       try {
         // Open the imported database
-        final importDb = AppDatabase.fromFile(tempFile);
-        
+        importDb = AppDatabase.fromFile(tempFile);
+
         // Import decks
         final decks = await importDb.select(importDb.decks).get();
         for (final deck in decks) {
@@ -310,7 +317,7 @@ class DatabaseImporter {
           final choices = await (importDb.select(importDb.choices)
                 ..where((c) => c.questionId.equals(question.id)))
               .get();
-          
+
           for (final choice in choices) {
             await database.insertChoice(
               ChoicesCompanion(
@@ -323,10 +330,6 @@ class DatabaseImporter {
           }
         }
 
-        // Close and clean up
-        await importDb.close();
-        await tempFile.delete();
-
         return ImportResult(
           success: true,
           message: 'Successfully imported $decksCount decks and $questionsCount questions from SQLite file',
@@ -334,14 +337,20 @@ class DatabaseImporter {
           questionsImported: questionsCount,
         );
       } catch (e) {
-        // Clean up on error
-        if (await tempFile.exists()) {
-          await tempFile.delete();
-        }
         return ImportResult(
           success: false,
           message: 'Invalid SQLite database format: $e',
         );
+      } finally {
+        // Always close and clean up to avoid file locks (esp. on Windows)
+        try {
+          await importDb?.close();
+        } catch (_) {}
+        try {
+          if (await tempFile.exists()) {
+            await tempFile.delete();
+          }
+        } catch (_) {}
       }
     } catch (e) {
       return ImportResult(

@@ -5,6 +5,8 @@
     "package:revision_buddy/data/database.dart",
     "package:revision_buddy/data/importer.dart",
     "package:revision_buddy/domain/models.dart",
+    "package:revision_buddy/services/notification_service.dart",
+    "package:shared_preferences/shared_preferences.dart",
     "package:uuid/uuid.dart",
     "package:drift/drift.dart",
     "package:revision_buddy/domain/spaced_repetition.dart"

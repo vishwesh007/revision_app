@@ -3,6 +3,8 @@
   "imports": [
     "package:flutter/material.dart",
     "package:flutter_riverpod/flutter_riverpod.dart",
-    "package:revision_buddy/presentation/home_screen.dart"
+    "package:shared_preferences/shared_preferences.dart",
+    "package:revision_buddy/presentation/home_screen.dart",
+    "package:revision_buddy/services/notification_service.dart"
   ]
 }

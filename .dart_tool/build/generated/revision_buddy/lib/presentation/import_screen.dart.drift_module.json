@@ -2,7 +2,9 @@
   "elements": {},
   "imports": [
     "package:flutter/material.dart",
+    "package:flutter/services.dart",
     "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:file_picker/file_picker.dart",
     "package:revision_buddy/domain/providers.dart"
   ]
 }

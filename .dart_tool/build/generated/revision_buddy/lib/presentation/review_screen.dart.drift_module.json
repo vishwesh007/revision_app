@@ -2,7 +2,10 @@
   "elements": {},
   "imports": [
     "package:flutter/material.dart",
+    "package:flutter/services.dart",
     "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:flutter_animate/flutter_animate.dart",
+    "package:confetti/confetti.dart",
     "package:revision_buddy/domain/models.dart",
     "package:revision_buddy/domain/providers.dart",
     "package:revision_buddy/domain/spaced_repetition.dart"

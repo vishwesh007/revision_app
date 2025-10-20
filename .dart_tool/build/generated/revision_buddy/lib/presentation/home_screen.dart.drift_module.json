@@ -3,6 +3,9 @@
   "imports": [
     "package:flutter/material.dart",
     "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:flutter_animate/flutter_animate.dart",
+    "package:flutter_staggered_animations/flutter_staggered_animations.dart",
+    "package:confetti/confetti.dart",
     "package:revision_buddy/domain/providers.dart",
     "package:revision_buddy/presentation/import_screen.dart",
     "package:revision_buddy/presentation/deck_screen.dart",

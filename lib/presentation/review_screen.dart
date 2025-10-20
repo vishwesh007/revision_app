@@ -164,7 +164,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
     super.initState();
     _animatedProgress = widget.questions.isEmpty ? 0 : 1 / widget.questions.length;
     _cornerConfetti = ConfettiController(duration: const Duration(milliseconds: 800));
-    _winConfetti = ConfettiController(duration: const Duration(seconds: 3));
+    _winConfetti = ConfettiController(duration: const Duration(seconds: 5));
     _progressController = AnimationController(vsync: this, duration: 300.ms);
   }
 
@@ -550,7 +550,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
             blastDirectionality: BlastDirectionality.explosive,
             shouldLoop: false,
             numberOfParticles: 30,
-            gravity: 0.7,
+            gravity: 0.4,
             colors: const [
               Colors.green,
               Colors.blue,
@@ -610,9 +610,9 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
               ),
             ),
           ).animate()
-              .scale(begin: const Offset(0.9, 0.9), end: const Offset(1.05, 1.05), duration: 260.ms, curve: Curves.easeOutBack)
+              .scale(begin: const Offset(0.9, 0.9), end: const Offset(1.05, 1.05), duration: 400.ms, curve: Curves.easeOutBack)
               .then()
-              .scale(begin: const Offset(1.05, 1.05), end: const Offset(1.0, 1.0), duration: 160.ms),
+              .scale(begin: const Offset(1.05, 1.05), end: const Offset(1.0, 1.0), duration: 250.ms),
         ),
       ],
     );
@@ -635,7 +635,7 @@ class _CountUpState extends State<_CountUp> {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: widget.from.toDouble(), end: widget.to.toDouble()),
-      duration: 600.ms,
+      duration: 1000.ms,
       builder: (context, value, _) => Text(
         '${value.round()}${widget.suffix} ',
         style: const TextStyle(fontWeight: FontWeight.bold),

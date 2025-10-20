@@ -56,6 +56,11 @@ This file contains a list of commonly used Flutter commands for development, bui
 - `flutter build linux`: Build for Linux desktop.
 - `flutter build macos`: Build for macOS desktop.
 - `flutter build windows`: Build for Windows desktop.
+flutter clean : Clean the build artifacts.
+
+flutter pub get : Get the project dependencies.
+
+flutter pub run build_runner build --delete-conflicting-outputs : Generate code using build_runner, deleting conflicting outputs.
 
 ## Testing
 - `flutter test`: Run unit and widget tests.

@@ -5637,7 +5637,7 @@
     {
       "id": "java-q195",
       "deckId": "java-interview",
-      "type": "multi-select",
+      "type": "mcq",
       "prompt": "Which are valid Java microbenchmarking tools? (Select all that apply)",
       "metadata": "{}",
       "choices": [

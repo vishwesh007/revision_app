@@ -1,0 +1,1394 @@
+[
+  {
+    "id": "java-q201",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What happens when you create an object with 'new' keyword?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c801",
+        "text": "Allocated on heap, constructor called",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c802",
+        "text": "Allocated on stack",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c803",
+        "text": "Stored in method area",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c804",
+        "text": "Stored in constant pool",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q202",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "Which are memory areas in JVM?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c805",
+        "text": "Heap",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c806",
+        "text": "Stack",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c807",
+        "text": "Method Area/Metaspace",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c808",
+        "text": "Register",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q203",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What causes OutOfMemoryError: Metaspace?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c809",
+        "text": "Too many classes loaded",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c810",
+        "text": "Heap full",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c811",
+        "text": "Stack overflow",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c812",
+        "text": "Thread limit reached",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q204",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "Which GC is best for low latency applications?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c813",
+        "text": "ZGC or Shenandoah",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c814",
+        "text": "Serial GC",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c815",
+        "text": "Parallel GC",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c816",
+        "text": "G1GC",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q205",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is a memory leak in Java?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c817",
+        "text": "Objects referenced but unused, preventing GC",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c818",
+        "text": "Memory allocation failure",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c819",
+        "text": "Stack overflow",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c820",
+        "text": "Heap exhaustion",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q206",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "Why is String immutable in Java?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c821",
+        "text": "Security",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c822",
+        "text": "String pool efficiency",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c823",
+        "text": "Thread safety",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c824",
+        "text": "Performance degradation",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q207",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between String, StringBuilder, StringBuffer?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c825",
+        "text": "String immutable, StringBuilder not thread-safe, StringBuffer synchronized",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c826",
+        "text": "All are same",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c827",
+        "text": "String is thread-safe only",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c828",
+        "text": "StringBuilder is fastest always",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q208",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What does String.intern() do internally?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c829",
+        "text": "Adds string to pool if absent, returns pool reference",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c830",
+        "text": "Creates new string",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c831",
+        "text": "Copies string",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c832",
+        "text": "Encrypts string",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q209",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "What are the risks of using reflection?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c833",
+        "text": "Performance overhead",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c834",
+        "text": "Security vulnerabilities",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c835",
+        "text": "Breaks encapsulation",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c836",
+        "text": "Improves type safety",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q210",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "What is a retention policy for annotations?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c837",
+        "text": "SOURCE - discarded by compiler",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c838",
+        "text": "CLASS - in bytecode",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c839",
+        "text": "RUNTIME - available at runtime",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c840",
+        "text": "NATIVE - platform specific",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q211",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is type erasure in Java generics?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c841",
+        "text": "Generic type info removed at runtime for backward compatibility",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c842",
+        "text": "Types are erased from code",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c843",
+        "text": "Compilation removes types",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c844",
+        "text": "Runtime optimization",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q212",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between <?> and <T>?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c845",
+        "text": "<?> is unbounded wildcard, <T> is type parameter",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c846",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c847",
+        "text": "<T> is faster",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c848",
+        "text": "<?> allows writes",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q213",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What does <? extends T> mean?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c849",
+        "text": "Upper bounded wildcard, accepts T or its subtypes (covariant)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c850",
+        "text": "Lower bounded",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c851",
+        "text": "Exact type T only",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c852",
+        "text": "Super type of T",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q214",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What does <? super T> mean?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c853",
+        "text": "Lower bounded wildcard, accepts T or its supertypes (contravariant)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c854",
+        "text": "Upper bounded",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c855",
+        "text": "Subtypes only",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c856",
+        "text": "Any type",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q215",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between checked and unchecked exceptions?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c857",
+        "text": "Checked: must handle/declare; Unchecked: runtime exceptions",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c858",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c859",
+        "text": "Checked are faster",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c860",
+        "text": "Unchecked must be caught",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q216",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "Can you catch Throwable or Error?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c861",
+        "text": "Yes, but not recommended as Errors are usually unrecoverable",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c862",
+        "text": "No, compilation error",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c863",
+        "text": "Only in native methods",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c864",
+        "text": "Only with special permission",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q217",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What happens if exception occurs in finally block?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c865",
+        "text": "Finally exception suppresses original exception",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c866",
+        "text": "Original exception is thrown",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c867",
+        "text": "Both thrown",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c868",
+        "text": "Compilation error",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q218",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is try-with-resources?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c869",
+        "text": "Auto-closes resources implementing AutoCloseable",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c870",
+        "text": "Try with multiple catches",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c871",
+        "text": "Resource pooling",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c872",
+        "text": "Lazy resource loading",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q219",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between fail-fast and fail-safe iterators?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c873",
+        "text": "Fail-fast throws CME on modification; fail-safe works on copy",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c874",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c875",
+        "text": "Fail-safe throws exception",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c876",
+        "text": "Both are same",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q220",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "Why is ConcurrentHashMap better than Hashtable?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c877",
+        "text": "Lock striping/segments allow concurrent reads and writes",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c878",
+        "text": "Hashtable is faster",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c879",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c880",
+        "text": "Hashtable allows nulls",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q221",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the load factor in HashMap?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c881",
+        "text": "Threshold (default 0.75) before resizing/rehashing",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c882",
+        "text": "Current size ratio",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c883",
+        "text": "Memory usage",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c884",
+        "text": "Thread load",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q222",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What happens when HashMap bucket has too many collisions?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c885",
+        "text": "Converts linked list to balanced tree (Java 8+) when threshold reached",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c886",
+        "text": "Throws exception",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c887",
+        "text": "Auto-rehashes",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c888",
+        "text": "Rejects entries",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q223",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "Which collection maintains insertion order?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c889",
+        "text": "LinkedHashMap",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c890",
+        "text": "LinkedHashSet",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c891",
+        "text": "ArrayList",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c892",
+        "text": "TreeSet",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q224",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between Comparable and Comparator?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c893",
+        "text": "Comparable: natural ordering in class; Comparator: external comparator",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c894",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c895",
+        "text": "Comparable is faster",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c896",
+        "text": "Comparator is built-in",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q225",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the time complexity of TreeMap operations?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c897",
+        "text": "O(log n) for get, put, remove",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c898",
+        "text": "O(1)",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c899",
+        "text": "O(n)",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c900",
+        "text": "O(n log n)",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q226",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is WeakHashMap used for?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c901",
+        "text": "Weak references allow GC of entries when key not referenced elsewhere",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c902",
+        "text": "Thread-safe map",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c903",
+        "text": "Faster HashMap",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c904",
+        "text": "Distributed cache",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q227",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is a functional interface?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c905",
+        "text": "Interface with single abstract method, can use lambda",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c906",
+        "text": "Interface with multiple methods",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c907",
+        "text": "Utility interface",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c908",
+        "text": "Interface with default methods",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q228",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "What are terminal operations in Stream API?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c909",
+        "text": "collect()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c910",
+        "text": "forEach()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c911",
+        "text": "reduce()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c912",
+        "text": "map()",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q229",
+    "deckId": "java-interview",
+    "type": "multi-select",
+    "prompt": "What are intermediate operations in Stream API?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c913",
+        "text": "filter()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c914",
+        "text": "map()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c915",
+        "text": "flatMap()",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c916",
+        "text": "count()",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q230",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between map() and flatMap()?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c917",
+        "text": "map: 1-to-1 transform; flatMap: 1-to-many, flattens nested streams",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c918",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c919",
+        "text": "flatMap is deprecated",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c920",
+        "text": "map is always better",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q231",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "Are streams reusable?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c921",
+        "text": "No, throws IllegalStateException if reused",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c922",
+        "text": "Yes, fully reusable",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c923",
+        "text": "Only parallel streams",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c924",
+        "text": "Only after reset",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q232",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between Stream.of() and Arrays.stream()?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c925",
+        "text": "Stream.of creates stream from elements; Arrays.stream from array",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c926",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c927",
+        "text": "Arrays.stream is deprecated",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c928",
+        "text": "Stream.of is slower",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q233",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the purpose of Optional?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c929",
+        "text": "Avoid NullPointerException, explicit null handling",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c930",
+        "text": "Performance optimization",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c931",
+        "text": "Thread safety",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c932",
+        "text": "Memory management",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q234",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between Optional.of() and Optional.ofNullable()?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c933",
+        "text": "of() throws NPE on null; ofNullable() accepts null",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c934",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c935",
+        "text": "ofNullable is faster",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c936",
+        "text": "of() is deprecated",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q235",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What are records in Java (14+)?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c937",
+        "text": "Immutable data carriers with auto-generated equals/hashCode/toString",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c938",
+        "text": "Database records",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c939",
+        "text": "Logging records",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c940",
+        "text": "Audio records",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q236",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What are sealed classes (Java 17)?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c941",
+        "text": "Restricts which classes can extend/implement, permits clause",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c942",
+        "text": "Thread-safe classes",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c943",
+        "text": "Encrypted classes",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c944",
+        "text": "Deprecated classes",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q237",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What are text blocks (Java 13+)?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c945",
+        "text": "Multi-line string literals with \"\"\" delimiter",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c946",
+        "text": "Comment blocks",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c947",
+        "text": "Code blocks",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c948",
+        "text": "Binary blocks",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q238",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is pattern matching for instanceof (Java 16)?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c949",
+        "text": "Combines instanceof check with cast: if (obj instanceof String s)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c950",
+        "text": "Regular expression matching",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c951",
+        "text": "Design pattern",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c952",
+        "text": "Network pattern",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q239",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is covariant return type?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c953",
+        "text": "Overriding method can return subtype of original return type",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c954",
+        "text": "Return multiple types",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c955",
+        "text": "Return void",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c956",
+        "text": "Generic return",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q240",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is method hiding vs method overriding?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c957",
+        "text": "Hiding: static methods in subclass; Overriding: instance methods",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c958",
+        "text": "Same thing",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c959",
+        "text": "Hiding is for private methods",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c960",
+        "text": "Overriding is for static",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q241",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is marker interface?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c961",
+        "text": "Empty interface to mark classes for special treatment (e.g., Serializable)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c962",
+        "text": "Interface marker",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c963",
+        "text": "Debug interface",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c964",
+        "text": "Performance interface",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q242",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the purpose of serialVersionUID?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c965",
+        "text": "Version control for serialization compatibility",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c966",
+        "text": "Unique object ID",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c967",
+        "text": "Thread ID",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c968",
+        "text": "Database version",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q243",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is cloning in Java?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c969",
+        "text": "Creates copy of object, shallow (references) or deep (new objects)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c970",
+        "text": "Object duplication",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c971",
+        "text": "Memory cloning",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c972",
+        "text": "Thread cloning",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q244",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the difference between shallow and deep copy?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c973",
+        "text": "Shallow: copies references; Deep: copies objects recursively",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c974",
+        "text": "No difference",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c975",
+        "text": "Shallow is faster always",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c976",
+        "text": "Deep is automatic",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q245",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is autoboxing and unboxing?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c977",
+        "text": "Auto conversion between primitive and wrapper (int <-> Integer)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c978",
+        "text": "Package management",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c979",
+        "text": "Memory optimization",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c980",
+        "text": "Thread pooling",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q246",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is the Integer cache?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c981",
+        "text": "Cache for Integer objects -128 to 127, valueOf() returns cached",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c982",
+        "text": "Performance cache",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c983",
+        "text": "Database cache",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c984",
+        "text": "Network cache",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q247",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "What is varargs in Java?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c985",
+        "text": "Variable number of arguments: method(Type... args)",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c986",
+        "text": "Variable arguments",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c987",
+        "text": "Argument validation",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c988",
+        "text": "Argument parsing",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "java-q248",
+    "deckId": "java-interview",
+    "type": "mcq",
+    "prompt": "Can we override static methods?",
+    "metadata": "{}",
+    "choices": [
+      {
+        "id": "java-c989",
+        "text": "No, static methods are hidden, not overridden",
+        "isCorrect": true
+      },
+      {
+        "id": "java-c990",
+        "text": "Yes, always",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c991",
+        "text": "Only with same signature",
+        "isCorrect": false
+      },
+      {
+        "id": "java-c992",
+        "text": "Only in Java 8+",
+        "isCorrect": false
+      }
+    ]
+  }
+]

@@ -160,7 +160,7 @@ class SettingsScreen extends ConsumerWidget {
                 data: (stats) => Column(
                   children: [
                     ListTile(
-                      leading: const Icon(Icons.analytics),
+                      leading: const Icon(Icons.analytics, size: 20),
                       title: const Text('Total Reviews'),
                       trailing: Text(
                         stats['totalReviews'].toString(),
@@ -168,7 +168,7 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                     ),
                     ListTile(
-                      leading: const Icon(Icons.pie_chart),
+                      leading: const Icon(Icons.pie_chart, size: 20),
                       title: const Text('Accuracy'),
                       trailing: Text(
                         '${(stats['accuracy'] as double).toStringAsFixed(1)}%',
@@ -176,7 +176,7 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                     ),
                     ListTile(
-                      leading: const Icon(Icons.pending_actions),
+                      leading: const Icon(Icons.pending_actions, size: 20),
                       title: const Text('Questions Due'),
                       trailing: Text(
                         stats['dueCount'].toString(),

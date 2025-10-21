@@ -36,9 +36,21 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
   Animation<double>? _progressAnimation;
   
   final List<Map<String, dynamic>> _reviewHistory = [];
+  // Store shuffled choices for each question to maintain consistency
+  final Map<int, List<ChoiceModel>> _shuffledChoices = {};
 
   QuestionModel get _currentQuestion => widget.questions[_currentIndex];
   bool get _isLastQuestion => _currentIndex == widget.questions.length - 1;
+  
+  // Get shuffled choices for current question
+  List<ChoiceModel> get _currentShuffledChoices {
+    if (!_shuffledChoices.containsKey(_currentIndex)) {
+      final shuffled = List<ChoiceModel>.from(_currentQuestion.choices);
+      shuffled.shuffle(math.Random());
+      _shuffledChoices[_currentIndex] = shuffled;
+    }
+    return _shuffledChoices[_currentIndex]!;
+  }
 
   void _toggleChoice(String choiceId) {
     if (_hasSubmitted) return;
@@ -372,8 +384,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
           ),
           const SizedBox(height: 12),
 
-          // Choices
-          ..._currentQuestion.choices.map((choice) {
+          // Choices (shuffled)
+          ..._currentShuffledChoices.map((choice) {
             final isSelected = _selectedChoices[choice.id] ?? false;
             return Card(
               margin: const EdgeInsets.only(bottom: 12),
@@ -488,8 +500,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> with TickerProvider
 
           const SizedBox(height: 16),
 
-          // Show correctness per choice
-          ..._currentQuestion.choices.map((choice) {
+          // Show correctness per choice (same shuffled order)
+          ..._currentShuffledChoices.map((choice) {
             final wasSelected = _selectedChoices[choice.id] ?? false;
             final isCorrectChoice = choice.isCorrect;
             final cardColor = isCorrectChoice

@@ -417,20 +417,14 @@ class _StatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon, color: Theme.of(context).colorScheme.primary)
-            .animate(onPlay: (controller) => controller.repeat())
-            .scale(duration: 1500.ms, curve: Curves.easeInOut)
-            .then()
-            .scale(begin: const Offset(1.0, 1.0), end: const Offset(0.95, 0.95)),
+        Icon(icon, color: Theme.of(context).colorScheme.primary),
         const SizedBox(height: 4),
         Text(
           value,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
-        )
-            .animate()
-            .fadeIn(delay: 200.ms),
+        ),
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall,

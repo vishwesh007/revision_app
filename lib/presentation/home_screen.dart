@@ -407,23 +407,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         ),
                         title: Text(deck.title),
                         subtitle: Text(deck.description),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (deck.dueCount > 0)
-                              Chip(
-                                label: Text('${deck.dueCount} due'),
-                                backgroundColor: Colors.orange.shade100,
-                              )
-                                  .animate(onPlay: (controller) => controller.repeat())
-                                  .shimmer(duration: 2000.ms, delay: 1000.ms),
-                            IconButton(
-                              icon: const Icon(Icons.delete_outline, color: Colors.red),
-                              tooltip: 'Delete deck',
-                              onPressed: () => _showDeleteDeckDialog(context, ref, deck),
-                            ),
-                          ],
-                        ),
                         onTap: () {
                           Navigator.push(
                             context,

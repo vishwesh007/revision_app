@@ -46,10 +46,36 @@ class DatabaseImporter {
     }
   }
 
+  /// Convert GitHub UI URLs to raw URLs automatically
+  String _convertToRawGitHubUrl(String url) {
+    // Check if it's a GitHub blob URL
+    final githubBlobPattern = RegExp(
+      r'https?://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.+)',
+      caseSensitive: false,
+    );
+    
+    final match = githubBlobPattern.firstMatch(url);
+    if (match != null) {
+      final owner = match.group(1);
+      final repo = match.group(2);
+      final branch = match.group(3);
+      final path = match.group(4);
+      
+      // Convert to raw.githubusercontent.com URL
+      return 'https://raw.githubusercontent.com/$owner/$repo/$branch/$path';
+    }
+    
+    // Return original URL if not a GitHub blob URL
+    return url;
+  }
+
   /// Import from URL (downloads JSON or SQLite)
   Future<ImportResult> importFromUrl(String url) async {
     try {
-      final response = await httpClient.get(Uri.parse(url)).timeout(
+      // Automatically convert GitHub URLs to raw format
+      final convertedUrl = _convertToRawGitHubUrl(url);
+      
+      final response = await httpClient.get(Uri.parse(convertedUrl)).timeout(
         const Duration(seconds: 30),
       );
 

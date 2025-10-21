@@ -1,11 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:drift/drift.dart';
+import 'package:flutter/foundation.dart' show compute;
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'database.dart';
+
+// Top-level function for isolate - parses JSON string
+Map<String, dynamic> _parseJsonInIsolate(String jsonString) {
+  return json.decode(jsonString) as Map<String, dynamic>;
+}
 
 class ImportResult {
   final bool success;
@@ -21,15 +27,20 @@ class ImportResult {
   });
 }
 
+/// Progress callback for import operations
+typedef ImportProgressCallback = void Function(String message, double progress);
+
 class DatabaseImporter {
   final AppDatabase database;
   final http.Client httpClient;
   final Future<Directory> Function() tempDirProvider;
+  ImportProgressCallback? onProgress;
 
   DatabaseImporter(
     this.database, {
     http.Client? httpClient,
     Future<Directory> Function()? tempDirProvider,
+    this.onProgress,
   })  : httpClient = httpClient ?? http.Client(),
         tempDirProvider = tempDirProvider ?? getTemporaryDirectory;
 
@@ -191,76 +202,106 @@ class DatabaseImporter {
   /// Import from JSON string (internal)
   Future<ImportResult> _importFromJson(String jsonString) async {
     try {
-      final data = json.decode(jsonString) as Map<String, dynamic>;
+      // Report parsing progress
+      onProgress?.call('Parsing JSON...', 0.1);
+      
+      // Parse JSON in a separate isolate to prevent UI blocking
+      final data = await compute(_parseJsonInIsolate, jsonString);
       
       int decksCount = 0;
       int questionsCount = 0;
 
-      // Import decks
-      final decks = data['decks'] as List<dynamic>?;
-      if (decks != null) {
-        for (final deckData in decks) {
-          final deck = deckData as Map<String, dynamic>;
+      // Use transaction for better performance
+      await database.transaction(() async {
+        // Import decks
+        final decks = data['decks'] as List<dynamic>?;
+        if (decks != null) {
+          onProgress?.call('Importing decks...', 0.2);
           
-          // Check for duplicates
-          final existing = await database.getDeckById(deck['id'] as String);
-          if (existing != null) continue; // Skip duplicates
+          for (final deckData in decks) {
+            final deck = deckData as Map<String, dynamic>;
+            
+            // Check for duplicates
+            final existing = await database.getDeckById(deck['id'] as String);
+            if (existing != null) continue; // Skip duplicates
 
-          await database.insertDeck(
-            DecksCompanion(
-              id: Value(deck['id'] as String),
-              title: Value(deck['title'] as String),
-              description: Value(deck['description'] as String? ?? ''),
-              createdAt: Value(
-                deck['createdAt'] != null
-                    ? DateTime.parse(deck['createdAt'] as String)
-                    : DateTime.now(),
-              ),
-            ),
-          );
-          decksCount++;
-        }
-      }
-
-      // Import questions and choices
-      final questions = data['questions'] as List<dynamic>?;
-      if (questions != null) {
-        for (final questionData in questions) {
-          final question = questionData as Map<String, dynamic>;
-          
-          // Check for duplicates
-          final existing = await database.getQuestionById(question['id'] as String);
-          if (existing != null) continue;
-
-          await database.insertQuestion(
-            QuestionsCompanion(
-              id: Value(question['id'] as String),
-              deckId: Value(question['deckId'] as String),
-              type: Value(question['type'] as String),
-              prompt: Value(question['prompt'] as String),
-              metadata: Value(question['metadata'] as String? ?? '{}'),
-            ),
-          );
-          questionsCount++;
-
-          // Import choices
-          final choices = question['choices'] as List<dynamic>?;
-          if (choices != null) {
-            for (final choiceData in choices) {
-              final choice = choiceData as Map<String, dynamic>;
-              await database.insertChoice(
-                ChoicesCompanion(
-                  id: Value(choice['id'] as String),
-                  questionId: Value(question['id'] as String),
-                  choiceText: Value(choice['text'] as String),
-                  isCorrect: Value(choice['isCorrect'] as bool),
+            await database.insertDeck(
+              DecksCompanion(
+                id: Value(deck['id'] as String),
+                title: Value(deck['title'] as String),
+                description: Value(deck['description'] as String? ?? ''),
+                createdAt: Value(
+                  deck['createdAt'] != null
+                      ? DateTime.parse(deck['createdAt'] as String)
+                      : DateTime.now(),
                 ),
-              );
-            }
+              ),
+            );
+            decksCount++;
           }
         }
-      }
 
+        // Import questions and choices in batches
+        final questions = data['questions'] as List<dynamic>?;
+        if (questions != null) {
+          const batchSize = 50; // Process 50 questions at a time
+          
+          for (var i = 0; i < questions.length; i += batchSize) {
+            final end = (i + batchSize < questions.length) ? i + batchSize : questions.length;
+            final batch = questions.sublist(i, end);
+            
+            // Report progress
+            final progress = 0.2 + (0.7 * (i / questions.length));
+            onProgress?.call(
+              'Importing questions... (${i + 1}/${questions.length})',
+              progress,
+            );
+            
+            for (final questionData in batch) {
+              final question = questionData as Map<String, dynamic>;
+              
+              // Check for duplicates
+              final existing = await database.getQuestionById(question['id'] as String);
+              if (existing != null) continue;
+
+              await database.insertQuestion(
+                QuestionsCompanion(
+                  id: Value(question['id'] as String),
+                  deckId: Value(question['deckId'] as String),
+                  type: Value(question['type'] as String),
+                  prompt: Value(question['prompt'] as String),
+                  metadata: Value(question['metadata'] as String? ?? '{}'),
+                ),
+              );
+              questionsCount++;
+
+              // Import choices
+              final choices = question['choices'] as List<dynamic>?;
+              if (choices != null) {
+                for (final choiceData in choices) {
+                  final choice = choiceData as Map<String, dynamic>;
+                  await database.insertChoice(
+                    ChoicesCompanion(
+                      id: Value(choice['id'] as String),
+                      questionId: Value(question['id'] as String),
+                      choiceText: Value(choice['text'] as String),
+                      isCorrect: Value(choice['isCorrect'] as bool),
+                    ),
+                  );
+                }
+              }
+            }
+            
+            // Small delay to allow UI to remain responsive
+            await Future.delayed(const Duration(milliseconds: 1));
+          }
+        }
+        
+        onProgress?.call('Finalizing...', 0.95);
+      });
+
+      onProgress?.call('Import complete!', 1.0);
+      
       return ImportResult(
         success: true,
         message: 'Successfully imported $decksCount decks and $questionsCount questions',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:file_picker/file_picker.dart';
+import '../data/importer.dart';
 import '../domain/providers.dart';
 
 class ImportScreen extends ConsumerStatefulWidget {
@@ -18,6 +19,8 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
   bool _isImporting = false;
   String? _resultMessage;
   bool? _importSuccess;
+  double _importProgress = 0.0;
+  String _progressMessage = '';
 
   // JSON example for clipboard
   static const String jsonExample = '''{
@@ -80,11 +83,30 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
     setState(() {
       _isImporting = true;
       _resultMessage = null;
+      _importProgress = 0.0;
+      _progressMessage = 'Starting import...';
     });
 
     try {
-      final importer = ref.read(importerProvider);
-      final result = await importer.importFromAsset('assets/demo_db.json');
+      final database = ref.read(databaseProvider);
+      final importer = DatabaseImporter(
+        database,
+        onProgress: (message, progress) {
+          if (mounted) {
+            setState(() {
+              _progressMessage = message;
+              _importProgress = progress;
+            });
+          }
+        },
+      );
+      
+      // Run import in background to prevent UI freeze
+      final result = await Future.microtask(() async {
+        return await importer.importFromAsset('assets/demo_db.json');
+      });
+
+      if (!mounted) return;
 
       setState(() {
         _isImporting = false;
@@ -111,6 +133,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         }
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _isImporting = false;
         _resultMessage = 'Error: $e';
@@ -130,12 +153,31 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
 
     setState(() {
       _isImporting = true;
-      _resultMessage = null;
+      _resultMessage = 'Downloading...';
+      _importProgress = 0.0;
+      _progressMessage = 'Downloading...';
     });
 
     try {
-      final importer = ref.read(importerProvider);
-      final result = await importer.importFromUrl(url);
+      final database = ref.read(databaseProvider);
+      final importer = DatabaseImporter(
+        database,
+        onProgress: (message, progress) {
+          if (mounted) {
+            setState(() {
+              _progressMessage = message;
+              _importProgress = progress;
+            });
+          }
+        },
+      );
+      
+      // Run import in background to prevent UI freeze
+      final result = await Future.microtask(() async {
+        return await importer.importFromUrl(url);
+      });
+
+      if (!mounted) return;
 
       setState(() {
         _isImporting = false;
@@ -161,6 +203,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         }
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _isImporting = false;
         _resultMessage = 'Error: $e';
@@ -195,11 +238,30 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
 
       setState(() {
         _isImporting = true;
-        _resultMessage = null;
+        _resultMessage = 'Processing file...';
+        _importProgress = 0.0;
+        _progressMessage = 'Processing file...';
       });
 
-      final importer = ref.read(importerProvider);
-      final importResult = await importer.importFromFile(filePath);
+      final database = ref.read(databaseProvider);
+      final importer = DatabaseImporter(
+        database,
+        onProgress: (message, progress) {
+          if (mounted) {
+            setState(() {
+              _progressMessage = message;
+              _importProgress = progress;
+            });
+          }
+        },
+      );
+      
+      // Run import in background to prevent UI freeze
+      final importResult = await Future.microtask(() async {
+        return await importer.importFromFile(filePath);
+      });
+
+      if (!mounted) return;
 
       setState(() {
         _isImporting = false;
@@ -225,6 +287,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         }
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
         _isImporting = false;
         _resultMessage = 'Error: $e';
@@ -362,15 +425,43 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
             ),
           ),
 
-          // Loading indicator
+          // Loading indicator with progress bar
           if (_isImporting) ...[
             const SizedBox(height: 24),
-            const Center(child: CircularProgressIndicator()),
-            const SizedBox(height: 8),
-            const Text(
-              'Importing database...',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: LinearProgressIndicator(
+                      value: _importProgress > 0 ? _importProgress : null,
+                      backgroundColor: Colors.grey[300],
+                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  if (_progressMessage.isNotEmpty)
+                    Text(
+                      _progressMessage,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  if (_importProgress > 0)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        '${(_importProgress * 100).toStringAsFixed(0)}%',
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ],
 

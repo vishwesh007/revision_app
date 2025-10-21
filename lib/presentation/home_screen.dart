@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:confetti/confetti.dart';
 import '../domain/providers.dart';
+import '../domain/models.dart';
 import 'import_screen.dart';
 import 'deck_screen.dart';
 import 'review_screen.dart';
@@ -29,6 +30,52 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void dispose() {
     _confettiController.dispose();
     super.dispose();
+  }
+
+  Future<void> _showDeleteDeckDialog(BuildContext context, WidgetRef ref, DeckModel deck) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Deck?'),
+        content: Text(
+          'Are you sure you want to delete "${deck.title}"? '
+          'This will permanently remove ${deck.questionCount} question(s) '
+          'and all associated review history.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.red,
+            ),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      final database = ref.read(databaseProvider);
+      await database.deleteDeck(deck.id);
+      
+      // Refresh providers
+      ref.invalidate(decksProvider);
+      ref.invalidate(dueQuestionsProvider);
+      ref.invalidate(statisticsProvider);
+      
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${deck.title} deleted'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -266,40 +313,126 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     verticalOffset: 50.0,
                     child: FadeInAnimation(child: widget),
                   ),
-                  children: decks.map((deck) => Card(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    child: ListTile(
-                      leading: Hero(
-                        tag: 'deck-${deck.id}',
-                        child: CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-                          child: Text(
-                            deck.questionCount.toString(),
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onSecondaryContainer,
-                              fontWeight: FontWeight.bold,
+                  children: decks.map((deck) => Dismissible(
+                    key: Key(deck.id),
+                    direction: DismissDirection.endToStart,
+                    confirmDismiss: (direction) async {
+                      return await showDialog<bool>(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('Delete Deck?'),
+                          content: Text(
+                            'Are you sure you want to delete "${deck.title}"? '
+                            'This will permanently remove ${deck.questionCount} question(s) '
+                            'and all associated review history.',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, false),
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, true),
+                              style: TextButton.styleFrom(
+                                foregroundColor: Colors.red,
+                              ),
+                              child: const Text('Delete'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    onDismissed: (direction) async {
+                      final database = ref.read(databaseProvider);
+                      await database.deleteDeck(deck.id);
+                      
+                      // Refresh providers
+                      ref.invalidate(decksProvider);
+                      ref.invalidate(dueQuestionsProvider);
+                      ref.invalidate(statisticsProvider);
+                      
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('${deck.title} deleted'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {
+                                // Note: Undo would require implementing a backup mechanism
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Undo not available - deck permanently deleted'),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    background: Container(
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.delete, color: Colors.white, size: 32),
+                          SizedBox(height: 4),
+                          Text(
+                            'Delete',
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    child: Card(
+                      margin: const EdgeInsets.only(bottom: 12),
+                      child: ListTile(
+                        leading: Hero(
+                          tag: 'deck-${deck.id}',
+                          child: CircleAvatar(
+                            backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                            child: Text(
+                              deck.questionCount.toString(),
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onSecondaryContainer,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
+                        title: Text(deck.title),
+                        subtitle: Text(deck.description),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (deck.dueCount > 0)
+                              Chip(
+                                label: Text('${deck.dueCount} due'),
+                                backgroundColor: Colors.orange.shade100,
+                              )
+                                  .animate(onPlay: (controller) => controller.repeat())
+                                  .shimmer(duration: 2000.ms, delay: 1000.ms),
+                            IconButton(
+                              icon: const Icon(Icons.delete_outline, color: Colors.red),
+                              tooltip: 'Delete deck',
+                              onPressed: () => _showDeleteDeckDialog(context, ref, deck),
+                            ),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => DeckScreen(deckId: deck.id),
+                            ),
+                          );
+                        },
                       ),
-                      title: Text(deck.title),
-                      subtitle: Text(deck.description),
-                      trailing: deck.dueCount > 0
-                          ? Chip(
-                              label: Text('${deck.dueCount} due'),
-                              backgroundColor: Colors.orange.shade100,
-                            )
-                                .animate(onPlay: (controller) => controller.repeat())
-                                .shimmer(duration: 2000.ms, delay: 1000.ms)
-                          : null,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => DeckScreen(deckId: deck.id),
-                          ),
-                        );
-                      },
                     ),
                   )).toList(),
                 ),

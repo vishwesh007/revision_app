@@ -1,0 +1,2612 @@
+{
+  "decks": [
+    {
+      "id": "java-interview",
+      "title": "Java Interview Questions",
+      "description": "Advanced Java interview questions for experienced developers",
+      "createdAt": "2025-10-21T00:00:00.000Z"
+    }
+  ],
+  "questions": [
+    {
+      "id": "java-q1",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is the primary difference between HashMap and ConcurrentHashMap?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c1", "text": "HashMap is synchronized, ConcurrentHashMap is not", "isCorrect": false},
+        {"id": "java-c2", "text": "ConcurrentHashMap allows concurrent modifications without external synchronization", "isCorrect": true},
+        {"id": "java-c3", "text": "HashMap supports null keys, ConcurrentHashMap does not", "isCorrect": false},
+        {"id": "java-c4", "text": "ConcurrentHashMap uses a single lock, HashMap uses multiple", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q2",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are true about Java's volatile keyword? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c5", "text": "Guarantees atomicity of compound operations", "isCorrect": false},
+        {"id": "java-c6", "text": "Prevents instruction reordering around the variable", "isCorrect": true},
+        {"id": "java-c7", "text": "Ensures visibility of changes across threads", "isCorrect": true},
+        {"id": "java-c8", "text": "Provides mutual exclusion like synchronized", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q3",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What happens when you override equals() but not hashCode() in a class used as a HashMap key?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c9", "text": "It works fine as long as equals() is consistent", "isCorrect": false},
+        {"id": "java-c10", "text": "The object may not be found in the HashMap", "isCorrect": true},
+        {"id": "java-c11", "text": "It throws a RuntimeException", "isCorrect": false},
+        {"id": "java-c12", "text": "The HashMap becomes read-only", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q4",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Spring Boot, what annotation is used to mark a method as a REST endpoint that handles HTTP GET requests?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c13", "text": "@GetMapping", "isCorrect": true},
+        {"id": "java-c14", "text": "@RequestMapping(method = RequestMethod.GET)", "isCorrect": false},
+        {"id": "java-c15", "text": "@RestController", "isCorrect": false},
+        {"id": "java-c16", "text": "@PathVariable", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q5",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which design patterns are commonly used in Spring Framework? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c17", "text": "Singleton", "isCorrect": true},
+        {"id": "java-c18", "text": "Factory", "isCorrect": true},
+        {"id": "java-c19", "text": "Observer", "isCorrect": false},
+        {"id": "java-c20", "text": "Proxy", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q6",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the default isolation level in Spring's @Transactional annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c21", "text": "READ_UNCOMMITTED", "isCorrect": false},
+        {"id": "java-c22", "text": "READ_COMMITTED", "isCorrect": true},
+        {"id": "java-c23", "text": "REPEATABLE_READ", "isCorrect": false},
+        {"id": "java-c24", "text": "SERIALIZABLE", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q7",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java 8+, what is the correct way to create an unmodifiable List from a stream?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c25", "text": "stream.collect(Collectors.toList())", "isCorrect": false},
+        {"id": "java-c26", "text": "List.copyOf(stream.collect(Collectors.toList()))", "isCorrect": true},
+        {"id": "java-c27", "text": "Collections.unmodifiableList(stream.collect(Collectors.toList()))", "isCorrect": false},
+        {"id": "java-c28", "text": "stream.toList()", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q8",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are benefits of using JPA over direct JDBC? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c29", "text": "Automatic SQL generation", "isCorrect": true},
+        {"id": "java-c30", "text": "Better performance for complex queries", "isCorrect": false},
+        {"id": "java-c31", "text": "Object-relational mapping", "isCorrect": true},
+        {"id": "java-c32", "text": "Reduced boilerplate code", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q9",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonIgnore annotation in Jackson?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c33", "text": "To ignore null values during serialization", "isCorrect": false},
+        {"id": "java-c34", "text": "To exclude a field from JSON serialization/deserialization", "isCorrect": true},
+        {"id": "java-c35", "text": "To validate JSON input", "isCorrect": false},
+        {"id": "java-c36", "text": "To format dates in JSON", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q10",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Hibernate, what does the 'n+1 selects' problem refer to?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c37", "text": "Executing n+1 SQL queries instead of 1", "isCorrect": true},
+        {"id": "java-c38", "text": "Having n+1 database connections", "isCorrect": false},
+        {"id": "java-c39", "text": "Creating n+1 entity instances", "isCorrect": false},
+        {"id": "java-c40", "text": "Using n+1 threads for queries", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q11",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which HTTP status codes indicate successful responses? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c41", "text": "200 OK", "isCorrect": true},
+        {"id": "java-c42", "text": "201 Created", "isCorrect": true},
+        {"id": "java-c43", "text": "301 Moved Permanently", "isCorrect": false},
+        {"id": "java-c44", "text": "404 Not Found", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q12",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the difference between @Autowired and @Inject annotations?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c45", "text": "@Autowired is Spring-specific, @Inject is JSR-330 standard", "isCorrect": true},
+        {"id": "java-c46", "text": "@Inject requires explicit bean names", "isCorrect": false},
+        {"id": "java-c47", "text": "@Autowired supports field injection only", "isCorrect": false},
+        {"id": "java-c48", "text": "@Inject is deprecated in Spring Boot", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q13",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does the 'final' keyword guarantee about a variable?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c49", "text": "The variable cannot be reassigned", "isCorrect": true},
+        {"id": "java-c50", "text": "The object it references is immutable", "isCorrect": false},
+        {"id": "java-c51", "text": "The variable is thread-safe", "isCorrect": false},
+        {"id": "java-c52", "text": "The variable is optimized by the compiler", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q14",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are valid ways to handle exceptions in Spring MVC? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c53", "text": "@ExceptionHandler annotation", "isCorrect": true},
+        {"id": "java-c54", "text": "@ControllerAdvice for global handling", "isCorrect": true},
+        {"id": "java-c55", "text": "@ErrorController interface", "isCorrect": false},
+        {"id": "java-c56", "text": "Custom HandlerExceptionResolver", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q15",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Transactional(readOnly = true) annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c57", "text": "Prevents any database writes", "isCorrect": true},
+        {"id": "java-c58", "text": "Makes the transaction faster", "isCorrect": false},
+        {"id": "java-c59", "text": "Disables transaction rollback", "isCorrect": false},
+        {"id": "java-c60", "text": "Allows concurrent reads", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q16",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is a 'race condition'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c61", "text": "When two threads compete for the same resource", "isCorrect": true},
+        {"id": "java-c62", "text": "When a thread runs faster than expected", "isCorrect": false},
+        {"id": "java-c63", "text": "When memory leaks occur", "isCorrect": false},
+        {"id": "java-c64", "text": "When exceptions are not caught", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q17",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are characteristics of a microservices architecture? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c65", "text": "Independent deployment", "isCorrect": true},
+        {"id": "java-c66", "text": "Shared database across services", "isCorrect": false},
+        {"id": "java-c67", "text": "Decentralized data management", "isCorrect": true},
+        {"id": "java-c68", "text": "Single technology stack", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q18",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @RestController annotation do in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c69", "text": "Combines @Controller and @ResponseBody", "isCorrect": true},
+        {"id": "java-c70", "text": "Handles RESTful web services only", "isCorrect": false},
+        {"id": "java-c71", "text": "Replaces @RequestMapping", "isCorrect": false},
+        {"id": "java-c72", "text": "Enables CORS automatically", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q19",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is the difference between '==' and '.equals()'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c73", "text": "== compares references, .equals() compares values", "isCorrect": true},
+        {"id": "java-c74", "text": ".equals() is only for primitives", "isCorrect": false},
+        {"id": "java-c75", "text": "== is deprecated", "isCorrect": false},
+        {"id": "java-c76", "text": ".equals() throws exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q20",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are SOLID principles? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c77", "text": "Single Responsibility", "isCorrect": true},
+        {"id": "java-c78", "text": "Open/Closed", "isCorrect": true},
+        {"id": "java-c79", "text": "Liskov Substitution", "isCorrect": true},
+        {"id": "java-c80", "text": "Dependency Inversion", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q21",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the default scope of a Spring bean?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c81", "text": "singleton", "isCorrect": true},
+        {"id": "java-c82", "text": "prototype", "isCorrect": false},
+        {"id": "java-c83", "text": "request", "isCorrect": false},
+        {"id": "java-c84", "text": "session", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q22",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does the 'transient' keyword do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c85", "text": "Excludes field from serialization", "isCorrect": true},
+        {"id": "java-c86", "text": "Makes field thread-local", "isCorrect": false},
+        {"id": "java-c87", "text": "Prevents field modification", "isCorrect": false},
+        {"id": "java-c88", "text": "Optimizes field access", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q23",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid ways to create a thread in Java? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c89", "text": "Extend Thread class", "isCorrect": true},
+        {"id": "java-c90", "text": "Implement Runnable interface", "isCorrect": true},
+        {"id": "java-c91", "text": "Implement Callable interface", "isCorrect": true},
+        {"id": "java-c92", "text": "Use ExecutorService", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q24",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @PathVariable annotation in Spring MVC?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c93", "text": "To bind URI template variables", "isCorrect": true},
+        {"id": "java-c94", "text": "To validate request parameters", "isCorrect": false},
+        {"id": "java-c95", "text": "To handle file uploads", "isCorrect": false},
+        {"id": "java-c96", "text": "To set response headers", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q25",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Hibernate, what does 'lazy loading' mean?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c97", "text": "Data is loaded only when accessed", "isCorrect": true},
+        {"id": "java-c98", "text": "Data is loaded eagerly", "isCorrect": false},
+        {"id": "java-c99", "text": "Data is cached permanently", "isCorrect": false},
+        {"id": "java-c100", "text": "Data is loaded asynchronously", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q26",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java memory areas? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c101", "text": "Heap", "isCorrect": true},
+        {"id": "java-c102", "text": "Stack", "isCorrect": true},
+        {"id": "java-c103", "text": "Method Area", "isCorrect": true},
+        {"id": "java-c104", "text": "CPU Cache", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q27",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the difference between @RequestParam and @PathVariable?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c105", "text": "@RequestParam extracts query parameters, @PathVariable extracts URI variables", "isCorrect": true},
+        {"id": "java-c106", "text": "@PathVariable is for POST requests only", "isCorrect": false},
+        {"id": "java-c107", "text": "@RequestParam requires encoding", "isCorrect": false},
+        {"id": "java-c108", "text": "@PathVariable is deprecated", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q28",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does 'immutable' mean for an object?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c109", "text": "Its state cannot be changed after creation", "isCorrect": true},
+        {"id": "java-c110", "text": "It cannot be garbage collected", "isCorrect": false},
+        {"id": "java-c111", "text": "It cannot be serialized", "isCorrect": false},
+        {"id": "java-c112", "text": "It cannot be cloned", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q29",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which annotations are used for dependency injection in Spring? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c113", "text": "@Autowired", "isCorrect": true},
+        {"id": "java-c114", "text": "@Inject", "isCorrect": true},
+        {"id": "java-c115", "text": "@Resource", "isCorrect": true},
+        {"id": "java-c116", "text": "@Value", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q30",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Qualifier annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c117", "text": "To specify which bean to inject when multiple candidates exist", "isCorrect": true},
+        {"id": "java-c118", "text": "To validate bean properties", "isCorrect": false},
+        {"id": "java-c119", "text": "To create qualified names for beans", "isCorrect": false},
+        {"id": "java-c120", "text": "To enable lazy initialization", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q31",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is a 'deadlock'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c121", "text": "Two or more threads waiting for each other to release resources", "isCorrect": true},
+        {"id": "java-c122", "text": "A thread that has stopped executing", "isCorrect": false},
+        {"id": "java-c123", "text": "Memory that cannot be freed", "isCorrect": false},
+        {"id": "java-c124", "text": "An unhandled exception", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q32",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are benefits of using Docker? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c125", "text": "Environment consistency", "isCorrect": true},
+        {"id": "java-c126", "text": "Reduced resource usage", "isCorrect": false},
+        {"id": "java-c127", "text": "Easy scaling", "isCorrect": true},
+        {"id": "java-c128", "text": "Automatic code compilation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q33",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Entity annotation do in JPA?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c129", "text": "Marks a class as a JPA entity", "isCorrect": true},
+        {"id": "java-c130", "text": "Creates database tables automatically", "isCorrect": false},
+        {"id": "java-c131", "text": "Validates entity fields", "isCorrect": false},
+        {"id": "java-c132", "text": "Enables caching for the entity", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q34",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is the purpose of the 'synchronized' keyword?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c133", "text": "To provide mutual exclusion and visibility guarantees", "isCorrect": true},
+        {"id": "java-c134", "text": "To make methods run faster", "isCorrect": false},
+        {"id": "java-c135", "text": "To prevent exceptions", "isCorrect": false},
+        {"id": "java-c136", "text": "To enable garbage collection", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q35",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid scopes for Spring beans? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c137", "text": "singleton", "isCorrect": true},
+        {"id": "java-c138", "text": "prototype", "isCorrect": true},
+        {"id": "java-c139", "text": "request", "isCorrect": true},
+        {"id": "java-c140", "text": "global", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q36",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the difference between @Component and @Service annotations?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c141", "text": "@Service is a specialization of @Component for service layer", "isCorrect": true},
+        {"id": "java-c142", "text": "@Component is for web controllers only", "isCorrect": false},
+        {"id": "java-c143", "text": "@Service enables transactions automatically", "isCorrect": false},
+        {"id": "java-c144", "text": "@Component requires explicit configuration", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q37",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does 'GC' stand for in JVM context?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c145", "text": "Garbage Collector", "isCorrect": true},
+        {"id": "java-c146", "text": "Global Cache", "isCorrect": false},
+        {"id": "java-c147", "text": "Generic Class", "isCorrect": false},
+        {"id": "java-c148", "text": "Graphics Context", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q38",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java concurrency utilities? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c149", "text": "CountDownLatch", "isCorrect": true},
+        {"id": "java-c150", "text": "CyclicBarrier", "isCorrect": true},
+        {"id": "java-c151", "text": "Semaphore", "isCorrect": true},
+        {"id": "java-c152", "text": "Vector", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q39",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Valid annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c153", "text": "To trigger validation on the annotated object", "isCorrect": true},
+        {"id": "java-c154", "text": "To validate method parameters only", "isCorrect": false},
+        {"id": "java-c155", "text": "To enable cross-field validation", "isCorrect": false},
+        {"id": "java-c156", "text": "To validate database constraints", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q40",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Hibernate, what is 'second-level caching'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c157", "text": "Caching at the SessionFactory level", "isCorrect": true},
+        {"id": "java-c158", "text": "Caching within a single session", "isCorrect": false},
+        {"id": "java-c159", "text": "Caching database connections", "isCorrect": false},
+        {"id": "java-c160", "text": "Caching SQL queries", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q41",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are characteristics of RESTful APIs? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c161", "text": "Stateless", "isCorrect": true},
+        {"id": "java-c162", "text": "Cacheable", "isCorrect": true},
+        {"id": "java-c163", "text": "Layered system", "isCorrect": true},
+        {"id": "java-c164", "text": "Requires SOAP", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q42",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @JsonProperty annotation do in Jackson?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c165", "text": "Maps JSON field names to Java properties", "isCorrect": true},
+        {"id": "java-c166", "text": "Validates JSON structure", "isCorrect": false},
+        {"id": "java-c167", "text": "Formats JSON output", "isCorrect": false},
+        {"id": "java-c168", "text": "Compresses JSON data", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q43",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'method overloading'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c169", "text": "Multiple methods with same name but different parameters", "isCorrect": true},
+        {"id": "java-c170", "text": "Overriding parent class methods", "isCorrect": false},
+        {"id": "java-c171", "text": "Dynamic method dispatch", "isCorrect": false},
+        {"id": "java-c172", "text": "Method chaining", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q44",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java 8 functional interfaces? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c173", "text": "Predicate", "isCorrect": true},
+        {"id": "java-c174", "text": "Function", "isCorrect": true},
+        {"id": "java-c175", "text": "Consumer", "isCorrect": true},
+        {"id": "java-c176", "text": "Iterator", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q45",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @EnableCaching annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c177", "text": "Enables Spring's caching abstraction", "isCorrect": true},
+        {"id": "java-c178", "text": "Creates cache configurations", "isCorrect": false},
+        {"id": "java-c179", "text": "Validates cache keys", "isCorrect": false},
+        {"id": "java-c180", "text": "Monitors cache performance", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q46",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does 'polymorphism' mean?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c181", "text": "Ability of objects to take multiple forms", "isCorrect": true},
+        {"id": "java-c182", "text": "Multiple inheritance", "isCorrect": false},
+        {"id": "java-c183", "text": "Dynamic typing", "isCorrect": false},
+        {"id": "java-c184", "text": "Method overloading only", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q47",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid HTTP methods in REST? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c185", "text": "GET", "isCorrect": true},
+        {"id": "java-c186", "text": "POST", "isCorrect": true},
+        {"id": "java-c187", "text": "PUT", "isCorrect": true},
+        {"id": "java-c188", "text": "CONNECT", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q48",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the difference between @Controller and @RestController?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c189", "text": "@RestController combines @Controller and @ResponseBody", "isCorrect": true},
+        {"id": "java-c190", "text": "@Controller is for REST APIs only", "isCorrect": false},
+        {"id": "java-c191", "text": "@RestController doesn't support views", "isCorrect": false},
+        {"id": "java-c192", "text": "@Controller requires @ResponseBody on each method", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q49",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'encapsulation'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c193", "text": "Hiding internal state and requiring access through methods", "isCorrect": true},
+        {"id": "java-c194", "text": "Converting data types", "isCorrect": false},
+        {"id": "java-c195", "text": "Creating wrapper classes", "isCorrect": false},
+        {"id": "java-c196", "text": "Memory management", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q50",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Spring Boot starters? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c197", "text": "spring-boot-starter-web", "isCorrect": true},
+        {"id": "java-c198", "text": "spring-boot-starter-data-jpa", "isCorrect": true},
+        {"id": "java-c199", "text": "spring-boot-starter-security", "isCorrect": true},
+        {"id": "java-c200", "text": "spring-boot-starter-mvc", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q51",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Repository annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c201", "text": "Marks a class as a DAO and enables exception translation", "isCorrect": true},
+        {"id": "java-c202", "text": "Creates database repositories automatically", "isCorrect": false},
+        {"id": "java-c203", "text": "Validates repository methods", "isCorrect": false},
+        {"id": "java-c204", "text": "Enables caching for repositories", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q52",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'inheritance'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c205", "text": "A mechanism to acquire properties of parent class", "isCorrect": true},
+        {"id": "java-c206", "text": "Copying object state", "isCorrect": false},
+        {"id": "java-c207", "text": "Method overloading", "isCorrect": false},
+        {"id": "java-c208", "text": "Dynamic binding", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q53",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid ways to configure Spring beans? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c209", "text": "XML configuration", "isCorrect": true},
+        {"id": "java-c210", "text": "Java configuration with @Configuration", "isCorrect": true},
+        {"id": "java-c211", "text": "Annotation-based configuration", "isCorrect": true},
+        {"id": "java-c212", "text": "Properties file configuration", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q54",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Transactional annotation do by default?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c213", "text": "Creates a transaction if none exists", "isCorrect": true},
+        {"id": "java-c214", "text": "Always creates a new transaction", "isCorrect": false},
+        {"id": "java-c215", "text": "Suspends existing transactions", "isCorrect": false},
+        {"id": "java-c216", "text": "Requires an existing transaction", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q55",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'abstraction'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c217", "text": "Hiding implementation details and showing only functionality", "isCorrect": true},
+        {"id": "java-c218", "text": "Creating abstract classes only", "isCorrect": false},
+        {"id": "java-c219", "text": "Interface implementation", "isCorrect": false},
+        {"id": "java-c220", "text": "Method signatures", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q56",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java collection interfaces? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c221", "text": "List", "isCorrect": true},
+        {"id": "java-c222", "text": "Set", "isCorrect": true},
+        {"id": "java-c223", "text": "Map", "isCorrect": true},
+        {"id": "java-c224", "text": "Array", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q57",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @RequestBody annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c225", "text": "Binds HTTP request body to a method parameter", "isCorrect": true},
+        {"id": "java-c226", "text": "Validates request body format", "isCorrect": false},
+        {"id": "java-c227", "text": "Converts request to JSON", "isCorrect": false},
+        {"id": "java-c228", "text": "Handles multipart requests", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q58",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'method overriding'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c229", "text": "Providing a specific implementation in subclass", "isCorrect": true},
+        {"id": "java-c230", "text": "Creating multiple methods with same name", "isCorrect": false},
+        {"id": "java-c231", "text": "Dynamic method dispatch", "isCorrect": false},
+        {"id": "java-c232", "text": "Method chaining", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q59",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring bean lifecycle phases? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c233", "text": "Instantiation", "isCorrect": true},
+        {"id": "java-c234", "text": "Initialization", "isCorrect": true},
+        {"id": "java-c235", "text": "Destruction", "isCorrect": true},
+        {"id": "java-c236", "text": "Compilation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q60",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @ResponseBody annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c237", "text": "Serializes return value to HTTP response body", "isCorrect": true},
+        {"id": "java-c238", "text": "Validates response format", "isCorrect": false},
+        {"id": "java-c239", "text": "Sets response headers", "isCorrect": false},
+        {"id": "java-c240", "text": "Handles response exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q61",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'coupling' in OOP?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c241", "text": "Degree of interdependence between classes", "isCorrect": true},
+        {"id": "java-c242", "text": "Multiple inheritance", "isCorrect": false},
+        {"id": "java-c243", "text": "Method overriding", "isCorrect": false},
+        {"id": "java-c244", "text": "Interface implementation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q62",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java access modifiers? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c245", "text": "public", "isCorrect": true},
+        {"id": "java-c246", "text": "private", "isCorrect": true},
+        {"id": "java-c247", "text": "protected", "isCorrect": true},
+        {"id": "java-c248", "text": "internal", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q63",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @PathParam annotation do in JAX-RS?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c249", "text": "Extracts URI path parameters", "isCorrect": true},
+        {"id": "java-c250", "text": "Validates path format", "isCorrect": false},
+        {"id": "java-c251", "text": "Creates REST paths", "isCorrect": false},
+        {"id": "java-c252", "text": "Handles path exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q64",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'cohesion' in OOP?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c253", "text": "Degree to which class elements belong together", "isCorrect": true},
+        {"id": "java-c254", "text": "Class inheritance hierarchy", "isCorrect": false},
+        {"id": "java-c255", "text": "Method signatures", "isCorrect": false},
+        {"id": "java-c256", "text": "Interface design", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q65",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid JPA relationship annotations? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c257", "text": "@OneToOne", "isCorrect": true},
+        {"id": "java-c258", "text": "@OneToMany", "isCorrect": true},
+        {"id": "java-c259", "text": "@ManyToOne", "isCorrect": true},
+        {"id": "java-c260", "text": "@ManyToMany", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q66",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @QueryParam annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c261", "text": "Extracts query parameters from URL", "isCorrect": true},
+        {"id": "java-c262", "text": "Validates query syntax", "isCorrect": false},
+        {"id": "java-c263", "text": "Creates SQL queries", "isCorrect": false},
+        {"id": "java-c264", "text": "Handles query exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q67",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'composition'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c265", "text": "Building complex objects from simpler ones", "isCorrect": true},
+        {"id": "java-c266", "text": "Multiple inheritance", "isCorrect": false},
+        {"id": "java-c267", "text": "Method chaining", "isCorrect": false},
+        {"id": "java-c268", "text": "Class hierarchies", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q68",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java primitive types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c269", "text": "int", "isCorrect": true},
+        {"id": "java-c270", "text": "boolean", "isCorrect": true},
+        {"id": "java-c271", "text": "char", "isCorrect": true},
+        {"id": "java-c272", "text": "String", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q69",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @FormParam annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c273", "text": "Extracts form parameters from POST requests", "isCorrect": true},
+        {"id": "java-c274", "text": "Validates form data", "isCorrect": false},
+        {"id": "java-c275", "text": "Creates HTML forms", "isCorrect": false},
+        {"id": "java-c276", "text": "Handles form submissions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q70",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'aggregation'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c277", "text": "A form of association where one object contains another", "isCorrect": true},
+        {"id": "java-c278", "text": "Method overriding", "isCorrect": false},
+        {"id": "java-c279", "text": "Interface implementation", "isCorrect": false},
+        {"id": "java-c280", "text": "Class inheritance", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q71",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java exception types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c281", "text": "Checked exceptions", "isCorrect": true},
+        {"id": "java-c282", "text": "Unchecked exceptions", "isCorrect": true},
+        {"id": "java-c283", "text": "Runtime exceptions", "isCorrect": true},
+        {"id": "java-c284", "text": "Syntax exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q72",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @HeaderParam annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c285", "text": "Extracts HTTP header values", "isCorrect": true},
+        {"id": "java-c286", "text": "Sets response headers", "isCorrect": false},
+        {"id": "java-c287", "text": "Validates header format", "isCorrect": false},
+        {"id": "java-c288", "text": "Creates HTTP headers", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q73",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'tight coupling'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c289", "text": "High interdependence between classes", "isCorrect": true},
+        {"id": "java-c290", "text": "Multiple inheritance", "isCorrect": false},
+        {"id": "java-c291", "text": "Method overloading", "isCorrect": false},
+        {"id": "java-c292", "text": "Interface usage", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q74",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java wrapper classes? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c293", "text": "Integer", "isCorrect": true},
+        {"id": "java-c294", "text": "Boolean", "isCorrect": true},
+        {"id": "java-c295", "text": "Character", "isCorrect": true},
+        {"id": "java-c296", "text": "String", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q75",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @CookieParam annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c297", "text": "Extracts cookie values from requests", "isCorrect": true},
+        {"id": "java-c298", "text": "Sets cookie values in responses", "isCorrect": false},
+        {"id": "java-c299", "text": "Validates cookie format", "isCorrect": false},
+        {"id": "java-c300", "text": "Creates HTTP cookies", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q76",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'loose coupling'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c301", "text": "Low interdependence between classes", "isCorrect": true},
+        {"id": "java-c302", "text": "No inheritance", "isCorrect": false},
+        {"id": "java-c303", "text": "No method overriding", "isCorrect": false},
+        {"id": "java-c304", "text": "No interfaces", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q77",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java keywords? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c305", "text": "abstract", "isCorrect": true},
+        {"id": "java-c306", "text": "interface", "isCorrect": true},
+        {"id": "java-c307", "text": "implements", "isCorrect": true},
+        {"id": "java-c308", "text": "include", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q78",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @MatrixParam annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c309", "text": "Extracts matrix parameters from URI", "isCorrect": true},
+        {"id": "java-c310", "text": "Creates matrix structures", "isCorrect": false},
+        {"id": "java-c311", "text": "Validates matrix data", "isCorrect": false},
+        {"id": "java-c312", "text": "Handles matrix operations", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q79",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'association'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c313", "text": "Relationship between classes", "isCorrect": true},
+        {"id": "java-c314", "text": "Method calling", "isCorrect": false},
+        {"id": "java-c315", "text": "Variable assignment", "isCorrect": false},
+        {"id": "java-c316", "text": "Class instantiation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q80",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java OOP concepts? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c317", "text": "Encapsulation", "isCorrect": true},
+        {"id": "java-c318", "text": "Inheritance", "isCorrect": true},
+        {"id": "java-c319", "text": "Polymorphism", "isCorrect": true},
+        {"id": "java-c320", "text": "Compilation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q81",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @BeanParam annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c321", "text": "Injects multiple parameters into a bean", "isCorrect": true},
+        {"id": "java-c322", "text": "Creates bean instances", "isCorrect": false},
+        {"id": "java-c323", "text": "Validates bean properties", "isCorrect": false},
+        {"id": "java-c324", "text": "Configures bean scopes", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q82",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'dependency injection'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c325", "text": "Providing dependencies to objects instead of creating them", "isCorrect": true},
+        {"id": "java-c326", "text": "Method parameter passing", "isCorrect": false},
+        {"id": "java-c327", "text": "Variable initialization", "isCorrect": false},
+        {"id": "java-c328", "text": "Class instantiation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q83",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java loop constructs? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c329", "text": "for", "isCorrect": true},
+        {"id": "java-c330", "text": "while", "isCorrect": true},
+        {"id": "java-c331", "text": "do-while", "isCorrect": true},
+        {"id": "java-c332", "text": "repeat-until", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q84",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Suspended annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c333", "text": "Suspends asynchronous response processing", "isCorrect": true},
+        {"id": "java-c334", "text": "Pauses thread execution", "isCorrect": false},
+        {"id": "java-c335", "text": "Stops method execution", "isCorrect": false},
+        {"id": "java-c336", "text": "Delays response sending", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q85",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'inversion of control'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c337", "text": "Framework controls object lifecycle instead of application", "isCorrect": true},
+        {"id": "java-c338", "text": "Reversing method calls", "isCorrect": false},
+        {"id": "java-c339", "text": "Changing inheritance direction", "isCorrect": false},
+        {"id": "java-c340", "text": "Interface implementation reversal", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q86",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java conditional statements? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c341", "text": "if", "isCorrect": true},
+        {"id": "java-c342", "text": "if-else", "isCorrect": true},
+        {"id": "java-c343", "text": "switch", "isCorrect": true},
+        {"id": "java-c344", "text": "when", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q87",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Context annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c345", "text": "Injects context objects like HttpServletRequest", "isCorrect": true},
+        {"id": "java-c346", "text": "Creates application context", "isCorrect": false},
+        {"id": "java-c347", "text": "Sets execution context", "isCorrect": false},
+        {"id": "java-c348", "text": "Configures context parameters", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q88",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'aspect-oriented programming'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c349", "text": "Programming paradigm for separating cross-cutting concerns", "isCorrect": true},
+        {"id": "java-c350", "text": "Object-oriented programming extension", "isCorrect": false},
+        {"id": "java-c351", "text": "Functional programming approach", "isCorrect": false},
+        {"id": "java-c352", "text": "Procedural programming method", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q89",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java data types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c353", "text": "Primitive types", "isCorrect": true},
+        {"id": "java-c354", "text": "Reference types", "isCorrect": true},
+        {"id": "java-c355", "text": "Object types", "isCorrect": true},
+        {"id": "java-c356", "text": "Function types", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q90",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Provider annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c357", "text": "Registers JAX-RS providers like exception mappers", "isCorrect": true},
+        {"id": "java-c358", "text": "Provides service implementations", "isCorrect": false},
+        {"id": "java-c359", "text": "Configures data providers", "isCorrect": false},
+        {"id": "java-c360", "text": "Sets up dependency providers", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q91",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'cross-cutting concern'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c361", "text": "Functionality that spans multiple modules", "isCorrect": true},
+        {"id": "java-c362", "text": "Method that calls multiple classes", "isCorrect": false},
+        {"id": "java-c363", "text": "Class that implements multiple interfaces", "isCorrect": false},
+        {"id": "java-c364", "text": "Module with multiple responsibilities", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q92",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java memory management concepts? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c365", "text": "Garbage collection", "isCorrect": true},
+        {"id": "java-c366", "text": "Memory leaks", "isCorrect": true},
+        {"id": "java-c367", "text": "Heap memory", "isCorrect": true},
+        {"id": "java-c368", "text": "CPU cache", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q93",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Consumes annotation specify?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c369", "text": "Media types the resource can consume", "isCorrect": true},
+        {"id": "java-c370", "text": "Resources the method consumes", "isCorrect": false},
+        {"id": "java-c371", "text": "Data types the method accepts", "isCorrect": false},
+        {"id": "java-c372", "text": "Memory consumption limits", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q94",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'pointcut' in AOP?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c373", "text": "Expression that matches join points", "isCorrect": true},
+        {"id": "java-c374", "text": "Method execution point", "isCorrect": false},
+        {"id": "java-c375", "text": "Aspect application point", "isCorrect": false},
+        {"id": "java-c376", "text": "Advice execution point", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q95",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java exception handling keywords? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c377", "text": "try", "isCorrect": true},
+        {"id": "java-c378", "text": "catch", "isCorrect": true},
+        {"id": "java-c379", "text": "finally", "isCorrect": true},
+        {"id": "java-c380", "text": "except", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q96",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Produces annotation specify?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c381", "text": "Media types the resource can produce", "isCorrect": true},
+        {"id": "java-c382", "text": "Resources the method produces", "isCorrect": false},
+        {"id": "java-c383", "text": "Data types the method returns", "isCorrect": false},
+        {"id": "java-c384", "text": "Output stream types", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q97",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'advice' in AOP?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c385", "text": "Code executed at join points", "isCorrect": true},
+        {"id": "java-c386", "text": "Method execution advice", "isCorrect": false},
+        {"id": "java-c387", "text": "Aspect configuration advice", "isCorrect": false},
+        {"id": "java-c388", "text": "Pointcut definition advice", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q98",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java class modifiers? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c389", "text": "public", "isCorrect": true},
+        {"id": "java-c390", "text": "abstract", "isCorrect": true},
+        {"id": "java-c391", "text": "final", "isCorrect": true},
+        {"id": "java-c392", "text": "static", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q99",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @ApplicationPath annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c393", "text": "Defines the base URI path for REST resources", "isCorrect": true},
+        {"id": "java-c394", "text": "Sets application classpath", "isCorrect": false},
+        {"id": "java-c395", "text": "Configures application properties", "isCorrect": false},
+        {"id": "java-c396", "text": "Defines application entry point", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q100",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'join point' in AOP?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c397", "text": "Point in program execution where advice can be applied", "isCorrect": true},
+        {"id": "java-c398", "text": "Method call point", "isCorrect": false},
+        {"id": "java-c399", "text": "Class instantiation point", "isCorrect": false},
+        {"id": "java-c400", "text": "Variable access point", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q101",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the main difference between @Component and @Bean annotations in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c401", "text": "@Component is for class-level scanning, @Bean is for method-level configuration", "isCorrect": true},
+        {"id": "java-c402", "text": "@Bean can only be used in @Configuration classes", "isCorrect": false},
+        {"id": "java-c403", "text": "@Component creates prototype beans by default", "isCorrect": false},
+        {"id": "java-c404", "text": "@Bean requires explicit bean naming", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q102",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are true about Java's CompletableFuture? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c405", "text": "It supports asynchronous programming", "isCorrect": true},
+        {"id": "java-c406", "text": "It can combine multiple asynchronous operations", "isCorrect": true},
+        {"id": "java-c407", "text": "It automatically handles thread pools", "isCorrect": false},
+        {"id": "java-c408", "text": "It provides functional programming style", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q103",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Hibernate, what does the @GeneratedValue(strategy = GenerationType.IDENTITY) do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c409", "text": "Uses database auto-increment feature", "isCorrect": true},
+        {"id": "java-c410", "text": "Generates UUID values", "isCorrect": false},
+        {"id": "java-c411", "text": "Uses a sequence table", "isCorrect": false},
+        {"id": "java-c412", "text": "Delegates to application code", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q104",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonCreator annotation in Jackson?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c413", "text": "Marks constructor or factory method for deserialization", "isCorrect": true},
+        {"id": "java-c414", "text": "Creates JSON objects", "isCorrect": false},
+        {"id": "java-c415", "text": "Validates JSON structure", "isCorrect": false},
+        {"id": "java-c416", "text": "Formats JSON output", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q105",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid ways to handle cross-origin requests in Spring Boot? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c417", "text": "@CrossOrigin annotation", "isCorrect": true},
+        {"id": "java-c418", "text": "WebMvcConfigurer configuration", "isCorrect": true},
+        {"id": "java-c419", "text": "CORS filter in web.xml", "isCorrect": false},
+        {"id": "java-c420", "text": "HttpSecurity configuration", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q106",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @PreAuthorize annotation do in Spring Security?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c421", "text": "Checks authorization before method execution", "isCorrect": true},
+        {"id": "java-c422", "text": "Authenticates users before method calls", "isCorrect": false},
+        {"id": "java-c423", "text": "Validates method parameters", "isCorrect": false},
+        {"id": "java-c424", "text": "Logs method execution", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q107",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java 9+, what is a module descriptor file called?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c425", "text": "module-info.java", "isCorrect": true},
+        {"id": "java-c426", "text": "module.java", "isCorrect": false},
+        {"id": "java-c427", "text": "ModuleDescriptor.java", "isCorrect": false},
+        {"id": "java-c428", "text": "module-config.java", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q108",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are benefits of using Spring Cloud? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c429", "text": "Service discovery", "isCorrect": true},
+        {"id": "java-c430", "text": "Configuration management", "isCorrect": true},
+        {"id": "java-c431", "text": "Circuit breaker pattern", "isCorrect": true},
+        {"id": "java-c432", "text": "Automatic code generation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q109",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the default fetch type for JPA @OneToMany relationships?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c433", "text": "LAZY", "isCorrect": true},
+        {"id": "java-c434", "text": "EAGER", "isCorrect": false},
+        {"id": "java-c435", "text": "IMMEDIATE", "isCorrect": false},
+        {"id": "java-c436", "text": "DEFERRED", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q110",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Docker, what does the CMD instruction do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c437", "text": "Provides default command for container execution", "isCorrect": true},
+        {"id": "java-c438", "text": "Runs commands during image build", "isCorrect": false},
+        {"id": "java-c439", "text": "Sets environment variables", "isCorrect": false},
+        {"id": "java-c440", "text": "Copies files into image", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q111",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring Boot testing annotations? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c441", "text": "@SpringBootTest", "isCorrect": true},
+        {"id": "java-c442", "text": "@WebMvcTest", "isCorrect": true},
+        {"id": "java-c443", "text": "@DataJpaTest", "isCorrect": true},
+        {"id": "java-c444", "text": "@SpringTest", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q112",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonInclude annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c445", "text": "Controls what fields are included in JSON serialization", "isCorrect": true},
+        {"id": "java-c446", "text": "Includes external JSON files", "isCorrect": false},
+        {"id": "java-c447", "text": "Validates JSON structure", "isCorrect": false},
+        {"id": "java-c448", "text": "Merges JSON objects", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q113",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'Pod'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c449", "text": "Smallest deployable unit containing one or more containers", "isCorrect": true},
+        {"id": "java-c450", "text": "A storage volume", "isCorrect": false},
+        {"id": "java-c451", "text": "A network service", "isCorrect": false},
+        {"id": "java-c452", "text": "A configuration object", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q114",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java memory leak causes? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c453", "text": "Static collections holding object references", "isCorrect": true},
+        {"id": "java-c454", "text": "Unclosed database connections", "isCorrect": true},
+        {"id": "java-c455", "text": "Unused local variables", "isCorrect": false},
+        {"id": "java-c456", "text": "Large primitive arrays", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q115",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Cacheable annotation do in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c457", "text": "Caches method return values", "isCorrect": true},
+        {"id": "java-c458", "text": "Makes methods thread-safe", "isCorrect": false},
+        {"id": "java-c459", "text": "Validates method parameters", "isCorrect": false},
+        {"id": "java-c460", "text": "Logs method calls", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q116",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'method reference'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c461", "text": "Shorthand syntax for lambda expressions", "isCorrect": true},
+        {"id": "java-c462", "text": "Reference to method metadata", "isCorrect": false},
+        {"id": "java-c463", "text": "Pointer to method implementation", "isCorrect": false},
+        {"id": "java-c464", "text": "Method documentation reference", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q117",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Maven scopes? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c465", "text": "compile", "isCorrect": true},
+        {"id": "java-c466", "text": "test", "isCorrect": true},
+        {"id": "java-c467", "text": "runtime", "isCorrect": true},
+        {"id": "java-c468", "text": "development", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q118",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @EventListener annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c469", "text": "Listens for application events", "isCorrect": true},
+        {"id": "java-c470", "text": "Handles HTTP requests", "isCorrect": false},
+        {"id": "java-c471", "text": "Validates form data", "isCorrect": false},
+        {"id": "java-c472", "text": "Manages database transactions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q119",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what does 'Optional' represent?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c473", "text": "Container that may or may not contain a value", "isCorrect": true},
+        {"id": "java-c474", "text": "Alternative to null checks", "isCorrect": false},
+        {"id": "java-c475", "text": "Configuration option", "isCorrect": false},
+        {"id": "java-c476", "text": "Method parameter choice", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q120",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are REST API best practices? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c477", "text": "Use HTTP status codes appropriately", "isCorrect": true},
+        {"id": "java-c478", "text": "Version API endpoints", "isCorrect": true},
+        {"id": "java-c479", "text": "Use nouns for resource names", "isCorrect": true},
+        {"id": "java-c480", "text": "Include verbs in URL paths", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q121",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Conditional annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c481", "text": "Conditionally register beans based on criteria", "isCorrect": true},
+        {"id": "java-c482", "text": "Execute methods conditionally", "isCorrect": false},
+        {"id": "java-c483", "text": "Validate conditional logic", "isCorrect": false},
+        {"id": "java-c484", "text": "Handle conditional exceptions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q122",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'type erasure'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c485", "text": "Removal of generic type information at runtime", "isCorrect": true},
+        {"id": "java-c486", "text": "Type conversion mechanism", "isCorrect": false},
+        {"id": "java-c487", "text": "Exception handling for type mismatches", "isCorrect": false},
+        {"id": "java-c488", "text": "Memory deallocation for objects", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q123",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java Stream operations? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c489", "text": "filter()", "isCorrect": true},
+        {"id": "java-c490", "text": "map()", "isCorrect": true},
+        {"id": "java-c491", "text": "collect()", "isCorrect": true},
+        {"id": "java-c492", "text": "execute()", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q124",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Async annotation do in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c493", "text": "Executes method asynchronously", "isCorrect": true},
+        {"id": "java-c494", "text": "Makes method thread-safe", "isCorrect": false},
+        {"id": "java-c495", "text": "Validates method parameters", "isCorrect": false},
+        {"id": "java-c496", "text": "Logs asynchronous operations", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q125",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Hibernate, what is 'dirty checking'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c497", "text": "Automatic detection of entity changes", "isCorrect": true},
+        {"id": "java-c498", "text": "Validation of data integrity", "isCorrect": false},
+        {"id": "java-c499", "text": "Checking for database locks", "isCorrect": false},
+        {"id": "java-c500", "text": "Memory cleanup process", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q126",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java EE specifications? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c501", "text": "JPA", "isCorrect": true},
+        {"id": "java-c502", "text": "JAX-RS", "isCorrect": true},
+        {"id": "java-c503", "text": "CDI", "isCorrect": true},
+        {"id": "java-c504", "text": "JPA-RS", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q127",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonView annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c505", "text": "Controls which fields are serialized for different views", "isCorrect": true},
+        {"id": "java-c506", "text": "Creates different JSON formats", "isCorrect": false},
+        {"id": "java-c507", "text": "Validates JSON views", "isCorrect": false},
+        {"id": "java-c508", "text": "Merges multiple JSON views", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q128",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Spring Data JPA, what does the @Query annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c509", "text": "Defines custom JPQL or SQL queries", "isCorrect": true},
+        {"id": "java-c510", "text": "Queries database metadata", "isCorrect": false},
+        {"id": "java-c511", "text": "Validates query parameters", "isCorrect": false},
+        {"id": "java-c512", "text": "Logs query execution", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q129",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid ways to configure logging in Spring Boot? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c513", "text": "application.properties", "isCorrect": true},
+        {"id": "java-c514", "text": "logback-spring.xml", "isCorrect": true},
+        {"id": "java-c515", "text": "Java configuration class", "isCorrect": true},
+        {"id": "java-c516", "text": "pom.xml dependencies", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q130",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @EnableScheduling annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c517", "text": "Enables scheduled task execution", "isCorrect": true},
+        {"id": "java-c518", "text": "Schedules database backups", "isCorrect": false},
+        {"id": "java-c519", "text": "Manages thread scheduling", "isCorrect": false},
+        {"id": "java-c520", "text": "Schedules application startup", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q131",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'diamond operator'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c521", "text": "<> syntax for generic type inference", "isCorrect": true},
+        {"id": "java-c522", "text": "Operator for type casting", "isCorrect": false},
+        {"id": "java-c523", "text": "Bitwise operator", "isCorrect": false},
+        {"id": "java-c524", "text": "Arithmetic operator", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q132",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java concurrency patterns? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c525", "text": "Producer-Consumer", "isCorrect": true},
+        {"id": "java-c526", "text": "Reader-Writer", "isCorrect": true},
+        {"id": "java-c527", "text": "Balking", "isCorrect": true},
+        {"id": "java-c528", "text": "Singleton", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q133",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @Profile annotation do in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c529", "text": "Activates beans for specific environments", "isCorrect": true},
+        {"id": "java-c530", "text": "Creates user profiles", "isCorrect": false},
+        {"id": "java-c531", "text": "Manages application profiles", "isCorrect": false},
+        {"id": "java-c532", "text": "Validates profile data", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q134",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'try-with-resources'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c533", "text": "Automatic resource management syntax", "isCorrect": true},
+        {"id": "java-c534", "text": "Exception handling mechanism", "isCorrect": false},
+        {"id": "java-c535", "text": "Memory management technique", "isCorrect": false},
+        {"id": "java-c536", "text": "File handling method", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q135",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring AOP advice types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c537", "text": "@Before", "isCorrect": true},
+        {"id": "java-c538", "text": "@After", "isCorrect": true},
+        {"id": "java-c539", "text": "@Around", "isCorrect": true},
+        {"id": "java-c540", "text": "@When", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q136",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonFormat annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c541", "text": "Controls date/time formatting in JSON", "isCorrect": true},
+        {"id": "java-c542", "text": "Formats JSON structure", "isCorrect": false},
+        {"id": "java-c543", "text": "Validates JSON format", "isCorrect": false},
+        {"id": "java-c544", "text": "Compresses JSON data", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q137",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'Service'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c545", "text": "Abstraction for accessing pods", "isCorrect": true},
+        {"id": "java-c546", "text": "Storage abstraction", "isCorrect": false},
+        {"id": "java-c547", "text": "Network policy", "isCorrect": false},
+        {"id": "java-c548", "text": "Configuration management", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q138",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java build tools? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c549", "text": "Maven", "isCorrect": true},
+        {"id": "java-c550", "text": "Gradle", "isCorrect": true},
+        {"id": "java-c551", "text": "Ant", "isCorrect": true},
+        {"id": "java-c552", "text": "Make", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q139",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableWebSecurity annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c553", "text": "Enables Spring Security configuration", "isCorrect": true},
+        {"id": "java-c554", "text": "Secures web applications", "isCorrect": false},
+        {"id": "java-c555", "text": "Validates security configurations", "isCorrect": false},
+        {"id": "java-c556", "text": "Manages user sessions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q140",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'bounded type parameter'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c557", "text": "Generic type restricted to certain types", "isCorrect": true},
+        {"id": "java-c558", "text": "Parameter with size limits", "isCorrect": false},
+        {"id": "java-c559", "text": "Method parameter bounds", "isCorrect": false},
+        {"id": "java-c560", "text": "Array size specification", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q141",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java module directives? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c561", "text": "requires", "isCorrect": true},
+        {"id": "java-c562", "text": "exports", "isCorrect": true},
+        {"id": "java-c563", "text": "opens", "isCorrect": true},
+        {"id": "java-c564", "text": "imports", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q142",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Value annotation in Spring?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c565", "text": "Injects values from properties files", "isCorrect": true},
+        {"id": "java-c566", "text": "Validates field values", "isCorrect": false},
+        {"id": "java-c567", "text": "Sets default values", "isCorrect": false},
+        {"id": "java-c568", "text": "Calculates field values", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q143",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'wild card' in generics?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c569", "text": "? symbol for unknown type parameters", "isCorrect": true},
+        {"id": "java-c570", "text": "Pattern matching symbol", "isCorrect": false},
+        {"id": "java-c571", "text": "Regular expression symbol", "isCorrect": false},
+        {"id": "java-c572", "text": "Arithmetic operator", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q144",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Spring Boot auto-configuration features? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c573", "text": "Embedded Tomcat", "isCorrect": true},
+        {"id": "java-c574", "text": "H2 database", "isCorrect": true},
+        {"id": "java-c575", "text": "Actuator endpoints", "isCorrect": true},
+        {"id": "java-c576", "text": "Custom logging", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q145",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @JsonIgnoreProperties annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c577", "text": "Ignores unknown properties during deserialization", "isCorrect": true},
+        {"id": "java-c578", "text": "Ignores null values", "isCorrect": false},
+        {"id": "java-c579", "text": "Validates property names", "isCorrect": false},
+        {"id": "java-c580", "text": "Merges properties", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q146",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Docker, what is a 'Dockerfile'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c581", "text": "Script for building Docker images", "isCorrect": true},
+        {"id": "java-c582", "text": "Container runtime configuration", "isCorrect": false},
+        {"id": "java-c583", "text": "Network configuration file", "isCorrect": false},
+        {"id": "java-c584", "text": "Volume mount specification", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q147",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java date/time APIs? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c585", "text": "java.time package", "isCorrect": true},
+        {"id": "java-c586", "text": "java.util.Date", "isCorrect": false},
+        {"id": "java-c587", "text": "java.util.Calendar", "isCorrect": false},
+        {"id": "java-c588", "text": "java.time.LocalDate", "isCorrect": true}
+      ]
+    },
+    {
+      "id": "java-q148",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @Scheduled annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c589", "text": "Schedules method execution at fixed intervals", "isCorrect": true},
+        {"id": "java-c590", "text": "Schedules database operations", "isCorrect": false},
+        {"id": "java-c591", "text": "Schedules thread creation", "isCorrect": false},
+        {"id": "java-c592", "text": "Schedules application startup", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q149",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'marker interface'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c593", "text": "Interface with no methods that provides metadata", "isCorrect": true},
+        {"id": "java-c594", "text": "Interface for marking objects", "isCorrect": false},
+        {"id": "java-c595", "text": "Interface for serialization", "isCorrect": false},
+        {"id": "java-c596", "text": "Interface for cloning", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q150",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java testing frameworks? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c597", "text": "JUnit", "isCorrect": true},
+        {"id": "java-c598", "text": "TestNG", "isCorrect": true},
+        {"id": "java-c599", "text": "Mockito", "isCorrect": true},
+        {"id": "java-c600", "text": "Hamcrest", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q151",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableJpaRepositories annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c601", "text": "Enables JPA repository scanning", "isCorrect": true},
+        {"id": "java-c602", "text": "Creates repository beans", "isCorrect": false},
+        {"id": "java-c603", "text": "Validates repository methods", "isCorrect": false},
+        {"id": "java-c604", "text": "Configures database connections", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q152",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'functional interface'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c605", "text": "Interface with exactly one abstract method", "isCorrect": true},
+        {"id": "java-c606", "text": "Interface for functional programming", "isCorrect": false},
+        {"id": "java-c607", "text": "Interface with default methods", "isCorrect": false},
+        {"id": "java-c608", "text": "Interface for lambda expressions", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q153",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring transaction propagation levels? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c609", "text": "REQUIRED", "isCorrect": true},
+        {"id": "java-c610", "text": "REQUIRES_NEW", "isCorrect": true},
+        {"id": "java-c611", "text": "MANDATORY", "isCorrect": true},
+        {"id": "java-c612", "text": "AUTOMATIC", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q154",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonSubTypes annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c613", "text": "Handles polymorphism in JSON serialization", "isCorrect": true},
+        {"id": "java-c614", "text": "Creates JSON subtypes", "isCorrect": false},
+        {"id": "java-c615", "text": "Validates subtype relationships", "isCorrect": false},
+        {"id": "java-c616", "text": "Merges JSON subtypes", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q155",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'ConfigMap'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c617", "text": "Object for storing configuration data", "isCorrect": true},
+        {"id": "java-c618", "text": "Network configuration", "isCorrect": false},
+        {"id": "java-c619", "text": "Storage configuration", "isCorrect": false},
+        {"id": "java-c620", "text": "Security configuration", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q156",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java serialization mechanisms? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c621", "text": "Serializable interface", "isCorrect": true},
+        {"id": "java-c622", "text": "Externalizable interface", "isCorrect": true},
+        {"id": "java-c623", "text": "JSON serialization", "isCorrect": false},
+        {"id": "java-c624", "text": "XML serialization", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q157",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableTransactionManagement annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c625", "text": "Enables declarative transaction management", "isCorrect": true},
+        {"id": "java-c626", "text": "Manages database transactions", "isCorrect": false},
+        {"id": "java-c627", "text": "Validates transaction boundaries", "isCorrect": false},
+        {"id": "java-c628", "text": "Logs transaction operations", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q158",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'raw type' in generics?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c629", "text": "Generic class without type parameters", "isCorrect": true},
+        {"id": "java-c630", "text": "Unprocessed data type", "isCorrect": false},
+        {"id": "java-c631", "text": "Primitive data type", "isCorrect": false},
+        {"id": "java-c632", "text": "Object type without generics", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q159",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java exception handling best practices? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c633", "text": "Catch specific exceptions", "isCorrect": true},
+        {"id": "java-c634", "text": "Don't suppress exceptions", "isCorrect": true},
+        {"id": "java-c635", "text": "Use finally for cleanup", "isCorrect": true},
+        {"id": "java-c636", "text": "Catch Exception everywhere", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q160",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonTypeInfo annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c637", "text": "Includes type information in JSON for polymorphism", "isCorrect": true},
+        {"id": "java-c638", "text": "Validates JSON types", "isCorrect": false},
+        {"id": "java-c639", "text": "Converts JSON types", "isCorrect": false},
+        {"id": "java-c640", "text": "Merges JSON types", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q161",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Docker, what is a 'volume'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c641", "text": "Persistent data storage for containers", "isCorrect": true},
+        {"id": "java-c642", "text": "Container memory allocation", "isCorrect": false},
+        {"id": "java-c643", "text": "Network volume control", "isCorrect": false},
+        {"id": "java-c644", "text": "CPU resource allocation", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q162",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java design patterns? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c645", "text": "Observer", "isCorrect": true},
+        {"id": "java-c646", "text": "Decorator", "isCorrect": true},
+        {"id": "java-c647", "text": "Strategy", "isCorrect": true},
+        {"id": "java-c648", "text": "Iterator", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q163",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableCaching annotation enable?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c649", "text": "Spring's caching abstraction", "isCorrect": true},
+        {"id": "java-c650", "text": "Database caching", "isCorrect": false},
+        {"id": "java-c651", "text": "HTTP response caching", "isCorrect": false},
+        {"id": "java-c652", "text": "Method result caching", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q164",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'heap pollution'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c653", "text": "Mixing incompatible generic types in heap", "isCorrect": true},
+        {"id": "java-c654", "text": "Memory corruption", "isCorrect": false},
+        {"id": "java-c655", "text": "Heap memory exhaustion", "isCorrect": false},
+        {"id": "java-c656", "text": "Garbage collection issue", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q165",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring MVC controller method return types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c657", "text": "String (view name)", "isCorrect": true},
+        {"id": "java-c658", "text": "ModelAndView", "isCorrect": true},
+        {"id": "java-c659", "text": "ResponseEntity", "isCorrect": true},
+        {"id": "java-c660", "text": "HttpResponse", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q166",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonPropertyOrder annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c661", "text": "Controls order of properties in JSON output", "isCorrect": true},
+        {"id": "java-c662", "text": "Orders JSON properties alphabetically", "isCorrect": false},
+        {"id": "java-c663", "text": "Validates property order", "isCorrect": false},
+        {"id": "java-c664", "text": "Sorts JSON arrays", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q167",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'Deployment'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c665", "text": "Manages replica sets and pods", "isCorrect": true},
+        {"id": "java-c666", "text": "Manages network policies", "isCorrect": false},
+        {"id": "java-c667", "text": "Manages storage volumes", "isCorrect": false},
+        {"id": "java-c668", "text": "Manages configuration", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q168",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java I/O stream types? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c669", "text": "Byte streams", "isCorrect": true},
+        {"id": "java-c670", "text": "Character streams", "isCorrect": true},
+        {"id": "java-c671", "text": "Buffered streams", "isCorrect": true},
+        {"id": "java-c672", "text": "Network streams", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q169",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableWebMvc annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c673", "text": "Enables Spring MVC configuration", "isCorrect": true},
+        {"id": "java-c674", "text": "Enables web security", "isCorrect": false},
+        {"id": "java-c675", "text": "Enables REST endpoints", "isCorrect": false},
+        {"id": "java-c676", "text": "Enables HTTP clients", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q170",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'bridge method'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c677", "text": "Synthetic method for type erasure compatibility", "isCorrect": true},
+        {"id": "java-c678", "text": "Method for connecting classes", "isCorrect": false},
+        {"id": "java-c679", "text": "Method for inheritance", "isCorrect": false},
+        {"id": "java-c680", "text": "Method for polymorphism", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q171",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java NIO.2 features? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c681", "text": "Path API", "isCorrect": true},
+        {"id": "java-c682", "text": "Files utility class", "isCorrect": true},
+        {"id": "java-c683", "text": "Asynchronous file I/O", "isCorrect": true},
+        {"id": "java-c684", "text": "Network I/O", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q172",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @ConfigurationProperties annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c685", "text": "Maps external properties to object fields", "isCorrect": true},
+        {"id": "java-c686", "text": "Configures application properties", "isCorrect": false},
+        {"id": "java-c687", "text": "Validates property values", "isCorrect": false},
+        {"id": "java-c688", "text": "Sets default properties", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q173",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'capture conversion'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c689", "text": "Conversion of wildcard types to concrete types", "isCorrect": true},
+        {"id": "java-c690", "text": "Type casting operation", "isCorrect": false},
+        {"id": "java-c691", "text": "Data type conversion", "isCorrect": false},
+        {"id": "java-c692", "text": "Generic type conversion", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q174",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Spring Cloud Config features? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c693", "text": "Centralized configuration", "isCorrect": true},
+        {"id": "java-c694", "text": "Environment-specific properties", "isCorrect": true},
+        {"id": "java-c695", "text": "Configuration encryption", "isCorrect": true},
+        {"id": "java-c696", "text": "Database configuration", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q175",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @JsonUnwrapped annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c697", "text": "Flattens object properties in JSON", "isCorrect": true},
+        {"id": "java-c698", "text": "Unwraps JSON arrays", "isCorrect": false},
+        {"id": "java-c699", "text": "Unwraps JSON objects", "isCorrect": false},
+        {"id": "java-c700", "text": "Removes JSON wrappers", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q176",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Docker, what is 'docker-compose'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c701", "text": "Tool for defining multi-container applications", "isCorrect": true},
+        {"id": "java-c702", "text": "Container orchestration tool", "isCorrect": false},
+        {"id": "java-c703", "text": "Image building tool", "isCorrect": false},
+        {"id": "java-c704", "text": "Container monitoring tool", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q177",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java collection utility methods? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c705", "text": "Collections.sort()", "isCorrect": true},
+        {"id": "java-c706", "text": "Collections.unmodifiableList()", "isCorrect": true},
+        {"id": "java-c707", "text": "Collections.synchronizedList()", "isCorrect": true},
+        {"id": "java-c708", "text": "Collections.stream()", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q178",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @EnableAsync annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c709", "text": "Enables asynchronous method execution", "isCorrect": true},
+        {"id": "java-c710", "text": "Enables parallel processing", "isCorrect": false},
+        {"id": "java-c711", "text": "Enables thread pooling", "isCorrect": false},
+        {"id": "java-c712", "text": "Enables concurrent execution", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q179",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'reifiable type'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c713", "text": "Type whose runtime representation contains full type information", "isCorrect": true},
+        {"id": "java-c714", "text": "Type that can be instantiated", "isCorrect": false},
+        {"id": "java-c715", "text": "Type with complete metadata", "isCorrect": false},
+        {"id": "java-c716", "text": "Type that supports reflection", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q180",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java annotation processing tools? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c717", "text": "APT", "isCorrect": true},
+        {"id": "java-c718", "text": "Lombok", "isCorrect": true},
+        {"id": "java-c719", "text": "MapStruct", "isCorrect": true},
+        {"id": "java-c720", "text": "Jackson", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q181",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableJpaAuditing annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c721", "text": "Enables automatic entity auditing", "isCorrect": true},
+        {"id": "java-c722", "text": "Enables JPA validation", "isCorrect": false},
+        {"id": "java-c723", "text": "Enables database auditing", "isCorrect": false},
+        {"id": "java-c724", "text": "Enables query auditing", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q182",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'non-reifiable type'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c725", "text": "Type whose runtime representation lacks full type information", "isCorrect": true},
+        {"id": "java-c726", "text": "Type that cannot be instantiated", "isCorrect": false},
+        {"id": "java-c727", "text": "Type without metadata", "isCorrect": false},
+        {"id": "java-c728", "text": "Type that doesn't support reflection", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q183",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Spring Data JPA repository methods? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c729", "text": "findById()", "isCorrect": true},
+        {"id": "java-c730", "text": "save()", "isCorrect": true},
+        {"id": "java-c731", "text": "deleteById()", "isCorrect": true},
+        {"id": "java-c732", "text": "updateById()", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q184",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonManagedReference annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c733", "text": "Manages forward part of parent-child relationship in JSON", "isCorrect": true},
+        {"id": "java-c734", "text": "Manages JSON references", "isCorrect": false},
+        {"id": "java-c735", "text": "Manages object lifecycle", "isCorrect": false},
+        {"id": "java-c736", "text": "Manages memory references", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q185",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'Secret'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c737", "text": "Object for storing sensitive data", "isCorrect": true},
+        {"id": "java-c738", "text": "Security policy object", "isCorrect": false},
+        {"id": "java-c739", "text": "Authentication object", "isCorrect": false},
+        {"id": "java-c740", "text": "Encryption object", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q186",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java reflection capabilities? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c741", "text": "Inspect classes at runtime", "isCorrect": true},
+        {"id": "java-c742", "text": "Invoke methods dynamically", "isCorrect": true},
+        {"id": "java-c743", "text": "Create objects dynamically", "isCorrect": true},
+        {"id": "java-c744", "text": "Modify bytecode", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q187",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableGlobalMethodSecurity annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c745", "text": "Enables method-level security annotations", "isCorrect": true},
+        {"id": "java-c746", "text": "Enables global security", "isCorrect": false},
+        {"id": "java-c747", "text": "Enables authentication", "isCorrect": false},
+        {"id": "java-c748", "text": "Enables authorization", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q188",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'type witness'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c749", "text": "Explicit type argument to assist type inference", "isCorrect": true},
+        {"id": "java-c750", "text": "Type declaration witness", "isCorrect": false},
+        {"id": "java-c751", "text": "Generic type witness", "isCorrect": false},
+        {"id": "java-c752", "text": "Method parameter witness", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q189",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java JVM tuning parameters? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c753", "text": "-Xmx (max heap)", "isCorrect": true},
+        {"id": "java-c754", "text": "-Xms (initial heap)", "isCorrect": true},
+        {"id": "java-c755", "text": "-XX:MaxGCPauseMillis", "isCorrect": true},
+        {"id": "java-c756", "text": "-Xdebug", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q190",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonBackReference annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c757", "text": "Manages back part of parent-child relationship in JSON", "isCorrect": true},
+        {"id": "java-c758", "text": "Creates back references", "isCorrect": false},
+        {"id": "java-c759", "text": "Manages circular references", "isCorrect": false},
+        {"id": "java-c760", "text": "Handles backward compatibility", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q191",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Docker, what is 'swarm mode'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c761", "text": "Native clustering and orchestration feature", "isCorrect": true},
+        {"id": "java-c762", "text": "Container monitoring mode", "isCorrect": false},
+        {"id": "java-c763", "text": "Network isolation mode", "isCorrect": false},
+        {"id": "java-c764", "text": "Security mode", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q192",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java security best practices? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c765", "text": "Validate input data", "isCorrect": true},
+        {"id": "java-c766", "text": "Use parameterized queries", "isCorrect": true},
+        {"id": "java-c767", "text": "Encrypt sensitive data", "isCorrect": true},
+        {"id": "java-c768", "text": "Use reflection extensively", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q193",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableDiscoveryClient annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c769", "text": "Enables service discovery client", "isCorrect": true},
+        {"id": "java-c770", "text": "Enables client discovery", "isCorrect": false},
+        {"id": "java-c771", "text": "Enables service registration", "isCorrect": false},
+        {"id": "java-c772", "text": "Enables load balancing", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q194",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'unchecked conversion'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c773", "text": "Conversion that bypasses generic type checking", "isCorrect": true},
+        {"id": "java-c774", "text": "Type casting without validation", "isCorrect": false},
+        {"id": "java-c775", "text": "Implicit type conversion", "isCorrect": false},
+        {"id": "java-c776", "text": "Primitive type conversion", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q195",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which are valid Java microbenchmarking tools? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c777", "text": "JMH (Java Microbenchmarking Harness)", "isCorrect": true},
+        {"id": "java-c778", "text": "JProfiler", "isCorrect": false},
+        {"id": "java-c779", "text": "VisualVM", "isCorrect": false},
+        {"id": "java-c780", "text": "YourKit", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q196",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What is the purpose of the @JsonIdentityInfo annotation?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c781", "text": "Handles circular references in JSON serialization", "isCorrect": true},
+        {"id": "java-c782", "text": "Identifies JSON objects", "isCorrect": false},
+        {"id": "java-c783", "text": "Validates object identity", "isCorrect": false},
+        {"id": "java-c784", "text": "Creates object IDs", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q197",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Kubernetes, what is a 'StatefulSet'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c785", "text": "Manages stateful applications with stable identities", "isCorrect": true},
+        {"id": "java-c786", "text": "Manages stateless applications", "isCorrect": false},
+        {"id": "java-c787", "text": "Manages configuration state", "isCorrect": false},
+        {"id": "java-c788", "text": "Manages application state", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q198",
+      "deckId": "java-interview",
+      "type": "multi-select",
+      "prompt": "Which of the following are Java performance monitoring tools? (Select all that apply)",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c789", "text": "JConsole", "isCorrect": true},
+        {"id": "java-c790", "text": "JVisualVM", "isCorrect": true},
+        {"id": "java-c791", "text": "Java Mission Control", "isCorrect": true},
+        {"id": "java-c792", "text": "JDB", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q199",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "What does the @EnableFeignClients annotation do?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c793", "text": "Enables Feign client scanning and configuration", "isCorrect": true},
+        {"id": "java-c794", "text": "Enables REST client creation", "isCorrect": false},
+        {"id": "java-c795", "text": "Enables HTTP client configuration", "isCorrect": false},
+        {"id": "java-c796", "text": "Enables service discovery", "isCorrect": false}
+      ]
+    },
+    {
+      "id": "java-q200",
+      "deckId": "java-interview",
+      "type": "mcq",
+      "prompt": "In Java, what is 'method handle'?",
+      "metadata": "{}",
+      "choices": [
+        {"id": "java-c797", "text": "Typed reference to method for dynamic invocation", "isCorrect": true},
+        {"id": "java-c798", "text": "Method reference handle", "isCorrect": false},
+        {"id": "java-c799", "text": "Reflection method handle", "isCorrect": false},
+        {"id": "java-c800", "text": "Dynamic method handle", "isCorrect": false}
+      ]
+    }
+  ]
+}
